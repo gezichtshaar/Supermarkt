@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="Models.VoordeelPad" project="Supermarkt" 
     file="/Supermarkt/src/Models/VoordeelPad.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="684" y="838"/>    
+    <position height="81" width="96" x="633" y="859"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="Models.Product" project="Supermarkt" file="/Supermarkt/src/Models/Product.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="87" x="181" y="670"/>    
+    <position height="81" width="87" x="187" y="720"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,16 +21,16 @@
   </class>  
   <class id="3" language="java" name="Actors.Medewerker" project="Supermarkt" 
     file="/Supermarkt/src/Actors/Medewerker.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="130" x="209" y="521"/>    
+    <position height="99" width="130" x="187" y="571"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="Actors.NegerKlant" project="Supermarkt" 
-    file="/Supermarkt/src/Actors/NegerKlant.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="122" x="308" y="670"/>    
+  <class id="4" language="java" name="Actors.NieuwNederlanderKlant" project="Supermarkt" 
+    file="/Supermarkt/src/Actors/NieuwNederlanderKlant.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="122" x="314" y="720"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="Actors.Klant" project="Supermarkt" file="/Supermarkt/src/Actors/Klant.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="93" x="379" y="521"/>    
+    <position height="81" width="93" x="357" y="571"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="Models.Pad" project="Supermarkt" file="/Supermarkt/src/Models/Pad.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="697" y="700"/>    
+    <position height="81" width="87" x="642" y="720"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,166 +57,162 @@
   </class>  
   <class id="7" language="java" name="Actors.Persoon" project="Supermarkt" file="/Supermarkt/src/Actors/Persoon.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="109" x="379" y="382"/>    
+    <position height="99" width="109" x="357" y="432"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="Models.Locatie" project="Supermarkt" file="/Supermarkt/src/Models/Locatie.java" 
+  <class id="8" language="java" name="Models.Afdeling" project="Supermarkt" file="/Supermarkt/src/Models/Afdeling.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="721" y="548"/>    
+    <position height="81" width="87" x="769" y="720"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="Supermarkt.Database" project="Supermarkt" 
+  <class id="9" language="java" name="Models.LoopRoute" project="Supermarkt" 
+    file="/Supermarkt/src/Models/LoopRoute.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="160" x="741" y="571"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="Supermarkt.Database" project="Supermarkt" 
     file="/Supermarkt/src/Supermarkt/Database.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="262" y="293"/>    
+    <position height="81" width="87" x="506" y="432"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="Models.Magazijn" project="Supermarkt" file="/Supermarkt/src/Models/Magazijn.java" 
+  <class id="11" language="java" name="Models.Magazijn" project="Supermarkt" file="/Supermarkt/src/Models/Magazijn.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="87" x="528" y="382"/>    
+    <position height="81" width="87" x="633" y="432"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="Supermarkt.Supermarkt" project="Supermarkt" 
+  <class id="12" language="java" name="Supermarkt.Supermarkt" project="Supermarkt" 
     file="/Supermarkt/src/Supermarkt/Supermarkt.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="92" x="545" y="225"/>    
+    <position height="-1" width="-1" x="596" y="297"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="12" language="java" name="Models.Koopzone" project="Supermarkt" 
+  <interface id="13" language="java" name="Models.Koopzone" project="Supermarkt" 
     file="/Supermarkt/src/Models/Koopzone.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="825" y="836"/>    
+    <position height="63" width="103" x="769" y="859"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="13" language="java" name="Models.Kassa" project="Supermarkt" file="/Supermarkt/src/Models/Kassa.java" 
+  <class id="14" language="java" name="Models.Kassa" project="Supermarkt" file="/Supermarkt/src/Models/Kassa.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="831" y="706"/>    
+    <position height="81" width="87" x="896" y="720"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="Actors.FaggotKlant" project="Supermarkt" 
+  <class id="15" language="java" name="Actors.FaggotKlant" project="Supermarkt" 
     file="/Supermarkt/src/Actors/FaggotKlant.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="126" x="470" y="670"/>    
+    <position height="99" width="126" x="476" y="720"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="Actors.Vrachtwagen" project="Supermarkt" 
+  <class id="16" language="java" name="Actors.Vrachtwagen" project="Supermarkt" 
     file="/Supermarkt/src/Actors/Vrachtwagen.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="101" x="373" y="225"/>    
+    <position height="81" width="101" x="339" y="275"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="16">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
   <generalization id="17">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="7"/>  
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="5"/>  
   </generalization>  
   <association id="18">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="19" name="personen"/>      
-      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="21">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <realization id="22">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="12"/>  
-  </realization>  
-  <association id="23">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="24" name="magazijn"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="26">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="28">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
-  <association id="29">    
-    <bendpoint x="645" y="382"/>    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="30" name="looppad"/>      
-      <multiplicity id="31" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="32">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
-  <association id="33">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="34" name="locatie"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="36">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="37" name="vervolgLocaties"/>      
-      <multiplicity id="38" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="39">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="40" name="winkelwagen"/>      
-      <multiplicity id="41" minimum="0" maximum="2147483647"/>    
+      <attribute id="19" name="winkelwagen"/>      
+      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <realization id="22">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <generalization id="23">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="24">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="25" name="database"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="27">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="28" name="personen"/>      
+      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="30">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="31" name="locatie"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="33">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="34">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="35" name="magazijn"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="37">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

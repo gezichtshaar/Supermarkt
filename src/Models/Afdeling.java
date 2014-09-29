@@ -1,6 +1,6 @@
 package Models;
 
-public class Afdeling extends Locatie  implements Koopzone{
+public class Afdeling implements Koopzone{
 
 	public Afdeling() {
 	}

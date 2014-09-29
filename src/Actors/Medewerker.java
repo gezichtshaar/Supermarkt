@@ -1,10 +1,10 @@
 package Actors;
 
-import Models.Locatie;
+import Models.LoopRoute;
 
 public class Medewerker extends Persoon {
 
-	public Medewerker(Locatie locatie) {
+	public Medewerker(LoopRoute locatie) {
 		super(locatie);
 	}
 

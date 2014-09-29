@@ -4,38 +4,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Actors.Persoon;
-import Models.Kassa;
-import Models.Locatie;
+import Models.LoopRoute;
 import Models.Magazijn;
-import Models.Pad;
 
 public class Supermarkt {
 	private Database database;
-	
+
 	private List<Persoon> personen;
-	
+
 	private Magazijn magazijn;
-	private Locatie looppad;
-	
-	public Supermarkt () {
+	private LoopRoute loopRoute;
+
+	public Supermarkt(LoopRoute[] nodeMap, int[][] routeMap) {
 		this.database = new Database();
-		
+
 		this.personen = new ArrayList<Persoon>();
-		
+
 		this.magazijn = new Magazijn();
-		this.looppad = new Pad().addLocatie(new Pad()).addLocatie(new Pad()).addLocatie(new Kassa());
+		this.loopRoute = buildRoute(nodeMap, routeMap);
 	}
-	
-	private void tick () {
+
+	private void tick() {
 		for (Persoon persoon : personen) {
 			persoon.update();
 		}
-		//save to database
+		// save to database
 	}
-	
-	public void run () { //maybe threading
+
+	public void run() { // maybe threading
 		while (true) {
 			tick();
 		}
+	}
+
+	private LoopRoute buildRoute(LoopRoute[] nodeMap, int[][] routeMap) {
+		if (nodeMap.length > 0) {
+			for (int y = 0; y < routeMap.length; y++) {
+				for (int x = 0; x < routeMap[x].length - 1; x++) {
+					nodeMap[routeMap[y][x]]
+							.addRoute(nodeMap[routeMap[y][x + 1]]);
+				}
+			}
+			return nodeMap[0];
+		}
+		return null;
 	}
 }

@@ -1,10 +1,10 @@
 package Actors;
 
-import Models.Locatie;
+import Models.LoopRoute;
 
 public class FaggotKlant extends Klant {
 
-	public FaggotKlant(Locatie locatie) {
+	public FaggotKlant(LoopRoute locatie) {
 		super(locatie);
 	}
 

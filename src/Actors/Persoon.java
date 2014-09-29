@@ -1,11 +1,11 @@
 package Actors;
 
-import Models.Locatie;
+import Models.LoopRoute;
 
 public abstract class Persoon {
-	private Locatie locatie;
+	protected LoopRoute locatie;
 
-	public Persoon(Locatie locatie) {
+	public Persoon(LoopRoute locatie) {
 		this.locatie = locatie;
 	}
 	

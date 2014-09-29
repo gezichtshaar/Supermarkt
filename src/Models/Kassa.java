@@ -1,6 +1,6 @@
 package Models;
 
-public class Kassa extends Locatie {
+public class Kassa {
 
 	public Kassa() {
 		// TODO Auto-generated constructor stub
