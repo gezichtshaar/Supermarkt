@@ -1,16 +1,17 @@
 package Actors;
 
-import Models.LoopRoute;
 import Supermarkt.Supermarkt;
+import Interfaces.Persoon;
+import Interfaces.Task;
 
-public class Medewerker extends Persoon {
-
-	public Medewerker(LoopRoute locatie) {
-		super(locatie);
+public class Medewerker implements Persoon {
+	private Task task;
+	
+	public Medewerker(Task task) {
+		this.task = task;
 	}
 
-	@Override
-	public void update(Supermarkt supermarkt) {
-		// TODO Auto-generated method stub
+	public void act(Supermarkt supermarkt) {
+		task.update(supermarkt);
 	}
 }

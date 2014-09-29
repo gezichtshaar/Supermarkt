@@ -1,3 +1,4 @@
+import Models.Afdeling;
 import Models.Kassa;
 import Models.LoopRoute;
 import Models.Pad;
@@ -10,7 +11,7 @@ public class Main {
 					new LoopRoute<Pad>(new Pad()),
 					new LoopRoute<Pad>(new Pad()),
 					new LoopRoute<Pad>(new Pad()),
-					new LoopRoute<Kassa>(new Kassa()) }, 
+					new LoopRoute<Afdeling>(new Afdeling()) }, 
 				new int[][] { 
 					{ 1, 2, 4 },
 					{ 1, 3, 4 } });

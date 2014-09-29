@@ -14,7 +14,7 @@ public class NieuwNederlanderKlant extends Klant {
 	}
 
 	@Override
-	public void update(Supermarkt supermarkt) {
+	public void act(Supermarkt supermarkt) {
 		super.update(supermarkt);
 		
 		if (sleepyTimer <= 0) {

@@ -2,9 +2,12 @@ package Supermarkt;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 import Actors.Klant;
-import Actors.Persoon;
+import Actors.Medewerker;
+import Interfaces.Persoon;
+import Models.Kassa;
 import Models.LoopRoute;
 import Models.Magazijn;
 
@@ -16,6 +19,9 @@ public class Supermarkt {
 	private Magazijn magazijn;
 	private LoopRoute loopRoute;
 
+	private Queue<Klant> kassaQueue;
+	private Kassa[] kassas;
+
 	public Supermarkt(LoopRoute[] nodeMap, int[][] routeMap) {
 		this.database = new Database();
 
@@ -23,6 +29,12 @@ public class Supermarkt {
 
 		this.magazijn = new Magazijn();
 		this.loopRoute = buildRoute(nodeMap, routeMap);
+
+		this.kassas = new Kassa[] {
+				new Kassa(),
+				new Kassa(),
+				new Kassa(),
+				new Kassa() };
 	}
 
 	private LoopRoute buildRoute(LoopRoute[] nodeMap, int[][] routeMap) {
@@ -40,7 +52,7 @@ public class Supermarkt {
 
 	private void tick() {
 		for (Persoon persoon : personen) {
-			persoon.update(this);
+			persoon.act(this);
 		}
 		// save to database
 	}
@@ -51,7 +63,16 @@ public class Supermarkt {
 		}
 	}
 
-	public void leave(Klant klant) {
+	public void afrekenen(Klant klant) {
 		personen.remove(klant);
+		kassaQueue.add(klant);
+	}
+
+	public Queue<Klant> getKassaQueue() {
+		return kassaQueue;
+	}
+	
+	public Magazijn getMagazijn() {
+		return magazijn;
 	}
 }

@@ -10,7 +10,7 @@ public class FaggotKlant extends Klant {
 	}
 
 	@Override
-	public void update(Supermarkt supermarkt) {
+	public void act(Supermarkt supermarkt) {
 		// TODO Auto-generated method stub
 	}
 }
