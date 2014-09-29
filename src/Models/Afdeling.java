@@ -14,4 +14,10 @@ public class Afdeling implements Task, Koopzone {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public Product pakProduct(String productNaam) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

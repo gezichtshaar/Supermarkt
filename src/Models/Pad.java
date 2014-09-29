@@ -16,4 +16,9 @@ public class Pad implements Task, Koopzone {
 		
 	}
 
+	@Override
+	public Product pakProduct(String productNaam) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

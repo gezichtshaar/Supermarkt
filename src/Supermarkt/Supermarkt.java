@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Queue;
 
 import Actors.Klant;
-import Actors.Medewerker;
 import Interfaces.Persoon;
 import Models.Kassa;
 import Models.LoopRoute;
