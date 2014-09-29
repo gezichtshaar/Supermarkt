@@ -3,21 +3,27 @@ package Actors;
 import java.util.Random;
 
 import Models.LoopRoute;
+import Supermarkt.Supermarkt;
 
 public class NieuwNederlanderKlant extends Klant {
-	private boolean sleepy;
+	private int sleepyTimer;
 
 	public NieuwNederlanderKlant(LoopRoute locatie) {
 		super(locatie);
-		this.sleepy = true;
+		this.sleepyTimer = getNextSleepAmount();
 	}
 
 	@Override
-	public void update() {
-		if (!sleepy) {
-			locatie = locatie.getRandomRoute();
-		}
+	public void update(Supermarkt supermarkt) {
+		super.update(supermarkt);
 		
-		sleepy = new Random().nextBoolean();
+		if (sleepyTimer <= 0) {
+			locatie = locatie.getRandomRoute();
+			sleepyTimer = getNextSleepAmount();
+		}
+	}
+	
+	private int getNextSleepAmount() {
+		return new Random().nextInt(10);
 	}
 }

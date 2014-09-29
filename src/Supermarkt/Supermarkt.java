@@ -3,6 +3,7 @@ package Supermarkt;
 import java.util.ArrayList;
 import java.util.List;
 
+import Actors.Klant;
 import Actors.Persoon;
 import Models.LoopRoute;
 import Models.Magazijn;
@@ -24,19 +25,6 @@ public class Supermarkt {
 		this.loopRoute = buildRoute(nodeMap, routeMap);
 	}
 
-	private void tick() {
-		for (Persoon persoon : personen) {
-			persoon.update();
-		}
-		// save to database
-	}
-
-	public void run() { // maybe threading
-		while (true) {
-			tick();
-		}
-	}
-
 	private LoopRoute buildRoute(LoopRoute[] nodeMap, int[][] routeMap) {
 		if (nodeMap.length > 0) {
 			for (int y = 0; y < routeMap.length; y++) {
@@ -48,5 +36,22 @@ public class Supermarkt {
 			return nodeMap[0];
 		}
 		return null;
+	}
+
+	private void tick() {
+		for (Persoon persoon : personen) {
+			persoon.update(this);
+		}
+		// save to database
+	}
+
+	public void run() { // maybe threading
+		while (true) {
+			tick();
+		}
+	}
+
+	public void leave(Klant klant) {
+		personen.remove(klant);
 	}
 }

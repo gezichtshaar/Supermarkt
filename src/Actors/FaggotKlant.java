@@ -1,6 +1,7 @@
 package Actors;
 
 import Models.LoopRoute;
+import Supermarkt.Supermarkt;
 
 public class FaggotKlant extends Klant {
 
@@ -9,7 +10,7 @@ public class FaggotKlant extends Klant {
 	}
 
 	@Override
-	public void update() {
+	public void update(Supermarkt supermarkt) {
 		// TODO Auto-generated method stub
 	}
 }
