@@ -1,11 +1,12 @@
 package Actors;
 
+import Interfaces.Koopzone;
 import Models.LoopRoute;
 import Supermarkt.Supermarkt;
 
 public class FaggotKlant extends Klant {
 
-	public FaggotKlant(LoopRoute locatie) {
+	public FaggotKlant(LoopRoute<Koopzone> locatie) {
 		super(locatie);
 	}
 

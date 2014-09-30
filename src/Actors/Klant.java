@@ -4,17 +4,18 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import Interfaces.Koopzone;
 import Interfaces.Persoon;
 import Models.LoopRoute;
 import Models.Product;
 import Supermarkt.Supermarkt;
 
 public abstract class Klant implements Persoon{
-	protected LoopRoute locatie;
+	protected LoopRoute<Koopzone> locatie;
 	private List<Product> winkelwagen;
 	private BigDecimal saldo;
 	
-	public Klant(LoopRoute locatie) {
+	public Klant(LoopRoute<Koopzone> locatie) {
 		this.locatie = locatie;
 		winkelwagen = new ArrayList<Product>();
 		saldo = new BigDecimal(10);//Needs fix

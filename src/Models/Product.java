@@ -20,4 +20,9 @@ public class Product {
 	public BigDecimal getPrijs() {
 		return prijs.multiply(korting);
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("Product: %s, Prijs: %f", naam, prijs.floatValue());
+	}
 }

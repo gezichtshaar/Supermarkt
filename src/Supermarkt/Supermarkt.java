@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Queue;
 
 import Actors.Klant;
+import Interfaces.Koopzone;
 import Interfaces.Persoon;
 import Models.Kassa;
 import Models.LoopRoute;
@@ -16,12 +17,12 @@ public class Supermarkt {
 	private List<Persoon> personen;
 
 	private Magazijn magazijn;
-	private LoopRoute loopRoute;
+	private LoopRoute<Koopzone> loopRoute;
 
 	private Queue<Klant> kassaQueue;
 	private Kassa[] kassas;
 
-	public Supermarkt(LoopRoute[] nodeMap, int[][] routeMap) {
+	public Supermarkt(LoopRoute<Koopzone>[] nodeMap, int[][] routeMap) {
 		this.database = new Database();
 
 		this.personen = new ArrayList<Persoon>();
@@ -33,7 +34,7 @@ public class Supermarkt {
 				new Kassa() };
 	}
 
-	private LoopRoute buildRoute(LoopRoute[] nodeMap, int[][] routeMap) {
+	private LoopRoute<Koopzone> buildRoute(LoopRoute<Koopzone>[] nodeMap, int[][] routeMap) {
 		if (nodeMap.length > 0) {
 			for (int y = 0; y < routeMap.length; y++) {
 				for (int x = 0; x < routeMap[y].length - 1; x++) {
@@ -72,5 +73,9 @@ public class Supermarkt {
 
 	public Magazijn getMagazijn() {
 		return magazijn;
+	}
+	
+	public Database getDatabase() {
+		return database;
 	}
 }
