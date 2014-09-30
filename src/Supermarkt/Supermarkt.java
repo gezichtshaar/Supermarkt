@@ -7,6 +7,7 @@ import java.util.Queue;
 import Actors.Klant;
 import Interfaces.Koopzone;
 import Interfaces.Persoon;
+import Interfaces.Task;
 import Models.Kassa;
 import Models.LoopRoute;
 import Models.Magazijn;
@@ -32,16 +33,14 @@ public class Supermarkt implements Runnable {
 		this.magazijn = new Magazijn();
 		this.loopRoute = buildRoute(nodeMap, routeMap);
 
-		this.kassas = new Kassa[] { new Kassa(), new Kassa(), new Kassa(),
-				new Kassa() };
+		this.kassas = new Kassa[] { new Kassa(), new Kassa(), new Kassa(), new Kassa() };
 	}
 
 	private LoopRoute<Koopzone> buildRoute(LoopRoute<Koopzone>[] nodeMap, int[][] routeMap) {
 		if (nodeMap.length > 0) {
-			for (int y = 0; y < routeMap.length; y++) {
-				for (int x = 0; x < routeMap[y].length - 1; x++) {
-					nodeMap[routeMap[y][x]]
-							.addRoute(nodeMap[routeMap[y][x + 1]]);
+			for (int[] path : routeMap) {
+				for (int x = 0; x < path.length - 1; x++) {
+					nodeMap[path[x]].addRoute(nodeMap[path[x + 1]]);
 				}
 			}
 			return nodeMap[0];
@@ -77,11 +76,11 @@ public class Supermarkt implements Runnable {
 	public Magazijn getMagazijn() {
 		return magazijn;
 	}
-	
+
 	public Database getDatabase() {
 		return database;
 	}
-	
+
 	public void stop() {
 		this.running = false;
 	}
@@ -90,6 +89,10 @@ public class Supermarkt implements Runnable {
 		return running;
 	}
 	
+	public Task getTask() { //Geef een taak terug die gedaan moet worden
+		return null;
+	}
+
 	@Override
 	public synchronized String toString() {
 		return String.format("Aantal klanten: %d", personen.size());

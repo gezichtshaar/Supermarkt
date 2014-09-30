@@ -8,7 +8,7 @@ import Supermarkt.Supermarkt;
 
 public class Main {
 	public static void main(String[] args) {
-		
+
 		@SuppressWarnings("unchecked")
 		Supermarkt supermarkt = new Supermarkt(
 				new LoopRoute[] {
@@ -16,16 +16,16 @@ public class Main {
 					new LoopRoute<Koopzone>(new Pad()),
 					new LoopRoute<Koopzone>(new Pad()),
 					new LoopRoute<Koopzone>(new Afdeling()) }, 
-				new int[][] { 
+				new int[][] {
 					{ 0, 1, 3 },
 					{ 0, 2, 3 } });
-		
+
 		new Thread(supermarkt).start();
-		
+
 		Scanner console = new Scanner(System.in);
-		
-		while(supermarkt.isRunning() && console.hasNextLine()) {
-			switch(console.nextLine()) {
+
+		while (supermarkt.isRunning() && console.hasNextLine()) {
+			switch (console.nextLine()) {
 			case "q":
 				supermarkt.stop();
 				break;
