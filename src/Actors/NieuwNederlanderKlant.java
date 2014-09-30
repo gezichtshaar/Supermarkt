@@ -14,9 +14,7 @@ public class NieuwNederlanderKlant extends Klant {
 	}
 
 	@Override
-	public void act(Supermarkt supermarkt) {
-		super.update(supermarkt);
-		
+	public void actKlant(Supermarkt supermarkt) {
 		if (--sleepyTimer <= 0) {
 			locatie = locatie.getRandomRoute();
 			sleepyTimer = getNextSleepAmount();

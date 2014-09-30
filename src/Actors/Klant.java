@@ -20,7 +20,18 @@ public abstract class Klant implements Persoon{
 		saldo = new BigDecimal(10);//Needs fix
 	}
 	
-	public void update(Supermarkt supermarkt) {
+	public final void act(Supermarkt supermarkt) {
+		preAct(supermarkt);
+		act(supermarkt);
+		postAct(supermarkt);
+	}
+	
+	private final void preAct(Supermarkt supermarkt) {
+	}
+	
+	protected abstract void actKlant(Supermarkt supermarkt);
+	
+	private final void postAct(Supermarkt supermarkt) {
 		if (locatie == null) {
 			supermarkt.afrekenen(this);
 		}

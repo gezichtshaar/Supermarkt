@@ -5,7 +5,7 @@ import Models.Pad;
 import Supermarkt.Supermarkt;
 
 public class Main {
-	public static void main() {
+	public static void main(String[] args) {
 		Supermarkt supermarkt = new Supermarkt(
 				new LoopRoute[] {
 					new LoopRoute<Pad>(new Pad()),
@@ -13,8 +13,8 @@ public class Main {
 					new LoopRoute<Pad>(new Pad()),
 					new LoopRoute<Afdeling>(new Afdeling()) }, 
 				new int[][] { 
-					{ 1, 2, 4 },
-					{ 1, 3, 4 } });
+					{ 0, 1, 3 },
+					{ 0, 2, 3 } });
 		
 		supermarkt.run();
 	}

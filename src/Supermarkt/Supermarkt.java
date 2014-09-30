@@ -29,17 +29,14 @@ public class Supermarkt {
 		this.magazijn = new Magazijn();
 		this.loopRoute = buildRoute(nodeMap, routeMap);
 
-		this.kassas = new Kassa[] {
-				new Kassa(),
-				new Kassa(),
-				new Kassa(),
+		this.kassas = new Kassa[] { new Kassa(), new Kassa(), new Kassa(),
 				new Kassa() };
 	}
 
 	private LoopRoute buildRoute(LoopRoute[] nodeMap, int[][] routeMap) {
 		if (nodeMap.length > 0) {
 			for (int y = 0; y < routeMap.length; y++) {
-				for (int x = 0; x < routeMap[x].length - 1; x++) {
+				for (int x = 0; x < routeMap[y].length - 1; x++) {
 					nodeMap[routeMap[y][x]]
 							.addRoute(nodeMap[routeMap[y][x + 1]]);
 				}
@@ -63,14 +60,16 @@ public class Supermarkt {
 	}
 
 	public void afrekenen(Klant klant) {
-		personen.remove(klant);
-		kassaQueue.add(klant);
+		if (personen.contains(klant)) {
+			personen.remove(klant);
+			kassaQueue.add(klant);
+		}
 	}
 
 	public Queue<Klant> getKassaQueue() {
 		return kassaQueue;
 	}
-	
+
 	public Magazijn getMagazijn() {
 		return magazijn;
 	}
