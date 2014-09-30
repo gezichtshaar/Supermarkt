@@ -17,7 +17,7 @@ public class NieuwNederlanderKlant extends Klant {
 	public void act(Supermarkt supermarkt) {
 		super.update(supermarkt);
 		
-		if (sleepyTimer <= 0) {
+		if (--sleepyTimer <= 0) {
 			locatie = locatie.getRandomRoute();
 			sleepyTimer = getNextSleepAmount();
 		}
