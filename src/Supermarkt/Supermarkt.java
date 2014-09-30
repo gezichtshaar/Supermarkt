@@ -11,7 +11,8 @@ import Models.Kassa;
 import Models.LoopRoute;
 import Models.Magazijn;
 
-public class Supermarkt {
+public class Supermarkt implements Runnable {
+	private volatile boolean running;
 	private Database database;
 
 	private List<Persoon> personen;
@@ -23,6 +24,7 @@ public class Supermarkt {
 	private Kassa[] kassas;
 
 	public Supermarkt(LoopRoute<Koopzone>[] nodeMap, int[][] routeMap) {
+		this.running = false;
 		this.database = new Database();
 
 		this.personen = new ArrayList<Persoon>();
@@ -55,7 +57,8 @@ public class Supermarkt {
 	}
 
 	public void run() { // maybe threading
-		while (true) {
+		running = true;
+		while (running) {
 			tick();
 		}
 	}
@@ -77,5 +80,18 @@ public class Supermarkt {
 	
 	public Database getDatabase() {
 		return database;
+	}
+	
+	public void stop() {
+		this.running = false;
+	}
+
+	public boolean isRunning() {
+		return running;
+	}
+	
+	@Override
+	public synchronized String toString() {
+		return String.format("Aantal klanten: %d", personen.size());
 	}
 }

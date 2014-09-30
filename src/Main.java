@@ -1,6 +1,7 @@
+import java.util.Scanner;
+
 import Interfaces.Koopzone;
 import Models.Afdeling;
-import Models.Kassa;
 import Models.LoopRoute;
 import Models.Pad;
 import Supermarkt.Supermarkt;
@@ -19,6 +20,20 @@ public class Main {
 					{ 0, 1, 3 },
 					{ 0, 2, 3 } });
 		
-		supermarkt.run();
+		new Thread(supermarkt).start();
+		
+		Scanner console = new Scanner(System.in);
+		
+		while(supermarkt.isRunning() && console.hasNextLine()) {
+			switch(console.nextLine()) {
+			case "q":
+				supermarkt.stop();
+				break;
+			case "stats":
+				System.out.println(supermarkt.toString());
+				break;
+			}
+		}
+		console.close();
 	}
 }
