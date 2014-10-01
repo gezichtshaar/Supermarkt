@@ -1,16 +1,16 @@
 package Models;
 
 import Interfaces.Task;
-import Supermarkt.Supermarkt;
+import Supermarkt.Supermarket;
 
-public class Magazijn implements Task {
+public class Storage implements Task {
 
-	public Magazijn() {
+	public Storage() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void update(Supermarkt supermarkt) {
+	public void update(Supermarket supermarket) {
 		// TODO Auto-generated method stub
 		
 	}

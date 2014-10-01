@@ -1,36 +1,36 @@
 import java.util.Scanner;
 
-import Interfaces.Koopzone;
-import Models.Afdeling;
-import Models.LoopRoute;
-import Models.Pad;
-import Supermarkt.Supermarkt;
+import Interfaces.Buyzone;
+import Models.Department;
+import Models.Route;
+import Models.Aisle;
+import Supermarkt.Supermarket;
 
 public class Main {
 	public static void main(String[] args) {
 
 		@SuppressWarnings("unchecked")
-		Supermarkt supermarkt = new Supermarkt(
-				new LoopRoute[] {
-					new LoopRoute<Koopzone>(new Pad()),
-					new LoopRoute<Koopzone>(new Pad()),
-					new LoopRoute<Koopzone>(new Pad()),
-					new LoopRoute<Koopzone>(new Afdeling()) }, 
+		Supermarket supermarket = new Supermarket(
+				new Route[] {
+					new Route<Buyzone>(new Aisle()),
+					new Route<Buyzone>(new Aisle()),
+					new Route<Buyzone>(new Aisle()),
+					new Route<Buyzone>(new Department()) }, 
 				new int[][] {
 					{ 0, 1, 3 },
 					{ 0, 2, 3 } });
 
-		new Thread(supermarkt).start();
+		new Thread(supermarket).start();
 
 		Scanner console = new Scanner(System.in);
 
-		while (supermarkt.isRunning() && console.hasNextLine()) {
+		while (supermarket.isRunning() && console.hasNextLine()) {
 			switch (console.nextLine()) {
 			case "q":
-				supermarkt.stop();
+				supermarket.stop();
 				break;
 			case "stats":
-				System.out.println(supermarkt.toString());
+				System.out.println(supermarket.toString());
 				break;
 			}
 		}

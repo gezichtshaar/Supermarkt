@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class LoopRoute<T> {
-	private List<LoopRoute<T>> vervolgRoute;
+public class Route<T> {
+	private List<Route<T>> vervolgRoute;
 	private T locatie;
 	
-	public LoopRoute(T locatie) {
-		vervolgRoute = new ArrayList<LoopRoute<T>>();
+	public Route(T locatie) {
+		vervolgRoute = new ArrayList<Route<T>>();
 	}
 	
-	public void addRoute(LoopRoute<T> route) {
+	public void addRoute(Route<T> route) {
 		vervolgRoute.add(route);
 	}
 	
-	public LoopRoute<T> getRandomRoute() {
+	public Route<T> getRandomRoute() {
 		if (!vervolgRoute.isEmpty()) {
 			return vervolgRoute.get(new Random().nextInt(vervolgRoute.size()));
 		}

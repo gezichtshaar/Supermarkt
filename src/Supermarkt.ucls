@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.6" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
-  <interface id="1" language="java" name="Interfaces.Koopzone" project="Supermarkt" 
-    file="/Supermarkt/src/Interfaces/Koopzone.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="1" language="java" name="Interfaces.Buyzone" project="Supermarkt" 
+    file="/Supermarkt/src/Interfaces/Buyzone.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1287" y="782"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="2" language="java" name="Interfaces.Persoon" project="Supermarkt" 
-    file="/Supermarkt/src/Interfaces/Persoon.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="2" language="java" name="Interfaces.Person" project="Supermarkt" 
+    file="/Supermarkt/src/Interfaces/Person.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="324" y="613"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="Actors.NieuwNederlanderKlant" project="Supermarkt" 
-    file="/Supermarkt/src/Actors/NieuwNederlanderKlant.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="Actors.NewDutchCostumer" project="Supermarkt" 
+    file="/Supermarkt/src/Actors/NewDutchCostumer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="322" y="1069"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="Actors.Medewerker" project="Supermarkt" 
-    file="/Supermarkt/src/Actors/Medewerker.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="Actors.Employee" project="Supermarkt" file="/Supermarkt/src/Actors/Employee.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="677" y="612"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -55,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="Models.Pad" project="Supermarkt" file="/Supermarkt/src/Models/Pad.java" 
+  <class id="7" language="java" name="Models.Aisle" project="Supermarkt" file="/Supermarkt/src/Models/Aisle.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1473" y="591"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -64,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="Actors.Klant" project="Supermarkt" file="/Supermarkt/src/Actors/Klant.java" 
+  <class id="8" language="java" name="Actors.Costumer" project="Supermarkt" file="/Supermarkt/src/Actors/Costumer.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="323" y="807"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -82,8 +82,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="10" language="java" name="Models.Afdeling" project="Supermarkt" file="/Supermarkt/src/Models/Afdeling.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="Models.Department" project="Supermarkt" 
+    file="/Supermarkt/src/Models/Department.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1288" y="591"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -109,8 +109,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="Supermarkt.Supermarkt" project="Supermarkt" 
-    file="/Supermarkt/src/Supermarkt/Supermarkt.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="13" language="java" name="Supermarkt.Supermarket" project="Supermarkt" 
+    file="/Supermarkt/src/Supermarkt/Supermarket.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="189" width="223" x="606" y="288"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -118,8 +118,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="Models.LoopRoute" project="Supermarkt" 
-    file="/Supermarkt/src/Models/LoopRoute.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="Models.Route" project="Supermarkt" file="/Supermarkt/src/Models/Route.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="793" y="806"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -136,8 +136,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="Actors.FaggotKlant" project="Supermarkt" 
-    file="/Supermarkt/src/Actors/FaggotKlant.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="16" language="java" name="Actors.NonBinaryGenderCostumer" project="Supermarkt" 
+    file="/Supermarkt/src/Actors/NonBinaryGenderCostumer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="562" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -154,104 +154,98 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="Actors.StudentKlant" project="Supermarkt" 
-    file="/Supermarkt/src/Actors/StudentKlant.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="81" y="1051"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <realization id="19">    
+  <association id="18">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="19" name="vervolgRoute"/>      
+      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="21">    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="9"/>  
   </realization>  
-  <realization id="20">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <realization id="21">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
-  <generalization id="22">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <realization id="23">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
-  <realization id="24">    
+  <realization id="22">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  
-  <generalization id="25">    
-    <end type="SOURCE" refId="5"/>    
+  <generalization id="23">    
+    <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="8"/>  
   </generalization>  
-  <association id="26">    
+  <association id="24">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="27" name="personen"/>      
-      <multiplicity id="28" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="29">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="30" name="kassas"/>      
-      <multiplicity id="31" minimum="0" maximum="2147483647"/>    
+      <attribute id="25" name="kassas"/>      
+      <multiplicity id="26" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="32">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="2"/>  
-  </realization>  
-  <association id="33">    
-    <bendpoint x="795" y="517"/>    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="34" name="loopRoute"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="36">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="37">    
+  <association id="27">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="38" name="task"/>      
-      <multiplicity id="39" minimum="0" maximum="1"/>    
+      <attribute id="28" name="task"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="40">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="41" name="locatie"/>      
-      <multiplicity id="42" minimum="0" maximum="1"/>    
+  <association id="30">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="31" name="kassaQueue"/>      
+      <multiplicity id="32" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="43">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="44" name="vervolgRoute"/>      
-      <multiplicity id="45" minimum="0" maximum="2147483647"/>    
+  <realization id="33">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <realization id="34">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="35">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="36" name="personen"/>      
+      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="46">    
+  <generalization id="38">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <realization id="39">    
     <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="9"/>  
   </realization>  
+  <realization id="40">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="41">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="42" name="locatie"/>      
+      <multiplicity id="43" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="44">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <realization id="45">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <generalization id="46">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
   <association id="47">    
     <end type="SOURCE" refId="8" navigable="false">      
       <attribute id="48" name="winkelwagen"/>      
@@ -262,36 +256,12 @@
   </association>  
   <association id="50">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="51" name="kassaQueue"/>      
-      <multiplicity id="52" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="53">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="54">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="55" name="magazijn"/>      
-      <multiplicity id="56" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="57">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="58" name="database"/>      
-      <multiplicity id="59" minimum="0" maximum="1"/>    
+      <attribute id="51" name="database"/>      
+      <multiplicity id="52" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="60">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

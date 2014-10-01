@@ -2,22 +2,22 @@ package Actors;
 
 import java.util.Random;
 
-import Interfaces.Koopzone;
-import Models.LoopRoute;
-import Supermarkt.Supermarkt;
+import Interfaces.Buyzone;
+import Models.Route;
+import Supermarkt.Supermarket;
 
-public class NieuwNederlanderKlant extends Klant {
+public class NewDutchCostumer extends Costumer {
 	private int sleepyTimer;
 
-	public NieuwNederlanderKlant(LoopRoute<Koopzone> locatie) {
+	public NewDutchCostumer(Route<Buyzone> locatie) {
 		super(locatie);
 		this.sleepyTimer = getNextSleepAmount();
 	}
 
 	@Override
-	public void actKlant(Supermarkt supermarkt) {
+	public void doAct(Supermarket supermarket) {
 		if (--sleepyTimer <= 0) {
-			locatie = locatie.getRandomRoute();
+			location = location.getRandomRoute();
 			sleepyTimer = getNextSleepAmount();
 		}
 	}
