@@ -5,25 +5,26 @@ import java.util.List;
 import java.util.Random;
 
 public class Route<T> {
-	private List<Route<T>> vervolgRoute;
-	private T locatie;
+	private List<Route<T>> nextRoutes;
+	private T location;
 	
-	public Route(T locatie) {
-		vervolgRoute = new ArrayList<Route<T>>();
+	public Route(T location) {
+		this.nextRoutes = new ArrayList<Route<T>>();
+		this.location = location;
 	}
 	
 	public void addRoute(Route<T> route) {
-		vervolgRoute.add(route);
+		nextRoutes.add(route);
 	}
 	
 	public Route<T> getRandomRoute() {
-		if (!vervolgRoute.isEmpty()) {
-			return vervolgRoute.get(new Random().nextInt(vervolgRoute.size()));
+		if (!nextRoutes.isEmpty()) {
+			return nextRoutes.get(new Random().nextInt(nextRoutes.size()));
 		}
 		return null;
 	}
 	
-	public T getLocatie() {
-		return locatie;
+	public T getLocation() {
+		return location;
 	}
 }

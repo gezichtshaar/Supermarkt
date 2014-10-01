@@ -2,7 +2,7 @@ package Models;
 
 import Actors.Costumer;
 import Interfaces.Task;
-import Supermarkt.Supermarket;
+import Supermarket.Supermarket;
 
 public class CashRegister implements Task {
 

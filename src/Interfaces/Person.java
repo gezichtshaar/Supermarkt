@@ -1,6 +1,6 @@
 package Interfaces;
 
-import Supermarkt.Supermarket;
+import Supermarket.Supermarket;
 
 public interface Person {
 	public void act(Supermarket supermarket);

@@ -1,6 +1,6 @@
 package Actors;
 
-import Supermarkt.Supermarket;
+import Supermarket.Supermarket;
 import Interfaces.Person;
 import Interfaces.Task;
 

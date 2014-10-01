@@ -2,12 +2,12 @@ package Actors;
 
 import Interfaces.Buyzone;
 import Models.Route;
-import Supermarkt.Supermarket;
+import Supermarket.Supermarket;
 
 public class StudentCostumer extends Costumer {
 
-	public StudentCostumer(Route<Buyzone> locatie) {
-		super(locatie);
+	public StudentCostumer(Route<Buyzone> location) {
+		super(location);
 		// TODO Auto-generated constructor stub
 	}
 

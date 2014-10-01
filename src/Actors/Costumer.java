@@ -8,22 +8,26 @@ import Interfaces.Buyzone;
 import Interfaces.Person;
 import Models.Route;
 import Models.Product;
-import Supermarkt.Supermarket;
+import Supermarket.Supermarket;
 
 public abstract class Costumer implements Person{
 	protected Route<Buyzone> location;
 	private List<Product> shoppingCart;
 	private BigDecimal balance;
 	
-	public Costumer(Route<Buyzone> locatie) {
-		this.location = locatie;
-		shoppingCart = new ArrayList<Product>();
-		balance = new BigDecimal(10);//Needs fix
+	public Costumer(Route<Buyzone> location) {
+		this(location, 10f);
+	}
+	
+	public Costumer(Route<Buyzone> location, float balance) {
+		this.location = location;
+		this.shoppingCart = new ArrayList<Product>();
+		this.balance = new BigDecimal(balance);
 	}
 	
 	public final void act(Supermarket supermarket) {
 		preAct(supermarket);
-		act(supermarket);
+		doAct(supermarket);
 		postAct(supermarket);
 	}
 	

@@ -1,7 +1,7 @@
 package Models;
 
 import Interfaces.Task;
-import Supermarkt.Supermarket;
+import Supermarket.Supermarket;
 
 public class Storage implements Task {
 

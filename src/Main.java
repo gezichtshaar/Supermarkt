@@ -4,7 +4,7 @@ import Interfaces.Buyzone;
 import Models.Department;
 import Models.Route;
 import Models.Aisle;
-import Supermarkt.Supermarket;
+import Supermarket.Supermarket;
 
 public class Main {
 	public static void main(String[] args) {

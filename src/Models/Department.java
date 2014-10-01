@@ -2,7 +2,7 @@ package Models;
 
 import Interfaces.Buyzone;
 import Interfaces.Task;
-import Supermarkt.Supermarket;
+import Supermarket.Supermarket;
 
 public class Department implements Task, Buyzone {
 

@@ -4,13 +4,13 @@ import java.util.Random;
 
 import Interfaces.Buyzone;
 import Models.Route;
-import Supermarkt.Supermarket;
+import Supermarket.Supermarket;
 
 public class NewDutchCostumer extends Costumer {
 	private int sleepyTimer;
 
-	public NewDutchCostumer(Route<Buyzone> locatie) {
-		super(locatie);
+	public NewDutchCostumer(Route<Buyzone> location) {
+		super(location);
 		this.sleepyTimer = getNextSleepAmount();
 	}
 

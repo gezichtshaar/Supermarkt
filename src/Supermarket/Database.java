@@ -1,4 +1,4 @@
-package Supermarkt;
+package Supermarket;
 
 public class Database {
 

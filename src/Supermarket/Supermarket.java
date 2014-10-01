@@ -1,4 +1,4 @@
-package Supermarkt;
+package Supermarket;
 
 import java.util.HashSet;
 import java.util.Queue;
