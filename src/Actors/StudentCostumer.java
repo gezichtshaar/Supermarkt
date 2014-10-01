@@ -14,6 +14,5 @@ public class StudentCostumer extends Costumer {
 	@Override
 	protected void doAct(Supermarket supermarket) {
 		// TODO Auto-generated method stub
-
 	}
 }

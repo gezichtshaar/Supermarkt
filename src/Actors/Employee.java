@@ -14,7 +14,7 @@ public class Employee implements Person {
 	public void act(Supermarket supermarket) {
 		if (task != null) {
 			task.update(supermarket);
-		}else{
+		} else {
 			task = supermarket.getTask();
 		}
 	}

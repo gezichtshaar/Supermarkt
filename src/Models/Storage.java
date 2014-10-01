@@ -12,10 +12,9 @@ public class Storage implements Task {
 	@Override
 	public void update(Supermarket supermarket) {
 		// TODO Auto-generated method stub
-		
 	}
-	
+
 	public void addProduct(Product product) {
-		
+
 	}
 }

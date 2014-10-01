@@ -12,7 +12,6 @@ public class Department implements Task, Buyzone {
 	@Override
 	public void update(Supermarket supermarket) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

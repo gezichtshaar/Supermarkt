@@ -21,7 +21,7 @@ public class NewDutchCostumer extends Costumer {
 			sleepyTimer = getNextSleepAmount();
 		}
 	}
-	
+
 	private int getNextSleepAmount() {
 		return new Random().nextInt(10);
 	}

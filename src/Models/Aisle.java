@@ -13,7 +13,7 @@ public class Aisle implements Task, Buyzone {
 	@Override
 	public void update(Supermarket supermarket) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
