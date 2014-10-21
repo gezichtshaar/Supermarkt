@@ -5,8 +5,10 @@ import Interfaces.Task;
 import Supermarket.Supermarket;
 
 public class Department implements Task, Buyzone {
+	private Shelf shelf;
 
-	public Department() {
+	public Department(ProductTypes productType) {
+		this.shelf = new Shelf(productType);
 	}
 
 	@Override
@@ -15,8 +17,15 @@ public class Department implements Task, Buyzone {
 	}
 
 	@Override
-	public Product takeProduct(String productName) {
-		// TODO Auto-generated method stub
+	public Product takeProduct(ProductTypes productType) {
+		if (shelf.hasProduct(productType)) {
+			return shelf.takeProduct();
+		}
 		return null;
+	}
+
+	@Override
+	public boolean hasProduct(ProductTypes productType) {
+		return shelf.hasProduct(productType);
 	}
 }

@@ -3,10 +3,10 @@ package Supermarket;
 import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import Actors.Costumer;
-import Interfaces.Buyzone;
-import Interfaces.Person;
+import Interfaces.Actor;
 import Interfaces.Task;
 import Models.CashRegister;
 import Models.Route;
@@ -14,44 +14,34 @@ import Models.Storage;
 
 public class Supermarket implements Runnable {
 	private volatile boolean running;
-	
+
 	private Database database;
 
-	private Set<Person> persons;
+	private Set<Actor> actors;
 
 	private Storage storage;
-	private Route<Buyzone> route;
+	private Route route;
 
 	private Queue<Costumer> kassaQueue;
 	private CashRegister[] cashRegisters;
 
-	public Supermarket(Route<Buyzone>[] nodeMap, int[][] routeMap) {
+	public Supermarket(Route route) {
 		this.running = false;
 		this.database = new Database();
 
-		this.persons = new HashSet<Person>();
+		this.actors = new HashSet<Actor>();
 
 		this.storage = new Storage();
-		this.route = buildRoute(nodeMap, routeMap);
+		this.route = route;
 
-		this.cashRegisters = new CashRegister[] { new CashRegister(), new CashRegister(), new CashRegister(), new CashRegister() };
-	}
-
-	private Route<Buyzone> buildRoute(Route<Buyzone>[] nodeMap, int[][] routeMap) {
-		if (nodeMap.length > 0) {
-			for (int[] path : routeMap) {
-				for (int x = 0; x < path.length - 1; x++) {
-					nodeMap[path[x]].addRoute(nodeMap[path[x + 1]]);
-				}
-			}
-			return nodeMap[0];
-		}
-		return null;
+		this.kassaQueue = new ConcurrentLinkedQueue<Costumer>();
+		this.cashRegisters = new CashRegister[] { new CashRegister(),
+				new CashRegister(), new CashRegister(), new CashRegister() };
 	}
 
 	private void tick() {
-		for (Person person : persons) {
-			person.act(this);
+		for (Actor actor : actors) {
+			actor.act(this);
 		}
 		// save to database
 	}
@@ -63,10 +53,10 @@ public class Supermarket implements Runnable {
 		}
 	}
 
-	public void afrekenen(Costumer klant) {
-		if (persons.contains(klant)) {
-			persons.remove(klant);
-			kassaQueue.add(klant);
+	public void checkout(Costumer costumer) {
+		if (actors.contains(costumer)) {
+			actors.remove(costumer);
+			kassaQueue.add(costumer);
 		}
 	}
 
@@ -89,13 +79,13 @@ public class Supermarket implements Runnable {
 	public boolean isRunning() {
 		return running;
 	}
-	
-	public Task getTask() { //Geef een taak terug die gedaan moet worden
+
+	public Task getTask() { // Geef een taak terug die gedaan moet worden
 		return null;
 	}
 
 	@Override
 	public synchronized String toString() {
-		return String.format("Aantal klanten: %d", persons.size());
+		return String.format("Aantal klanten: %d", actors.size());
 	}
 }

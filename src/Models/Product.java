@@ -3,26 +3,21 @@ package Models;
 import java.math.BigDecimal;
 
 public class Product {
-	private String name;
-	private BigDecimal price;
-	private BigDecimal discount;
+	private ProductTypes productType;
 
-	public Product(String name, BigDecimal price) {
-		this(name, price, new BigDecimal(1));
+	public Product(ProductTypes productType) {
+		this.productType = productType;
 	}
-
-	public Product(String name, BigDecimal price, BigDecimal discount) {
-		this.name = name;
-		this.price = price;
-		this.discount = discount;
+	
+	public String getName() {
+		return productType.getName();
 	}
-
-	public BigDecimal getPrijs() {
-		return price.multiply(discount);
+	
+	public BigDecimal getPrice() {
+		return productType.getPrice();
 	}
-
-	@Override
-	public String toString() {
-		return String.format("Product: %s, Prijs: %f", name, price.floatValue());
+	
+	public BigDecimal getRealPrice() {
+		return productType.getPrice().multiply(productType.getDiscount());
 	}
 }

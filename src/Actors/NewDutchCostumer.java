@@ -2,14 +2,13 @@ package Actors;
 
 import java.util.Random;
 
-import Interfaces.Buyzone;
 import Models.Route;
 import Supermarket.Supermarket;
 
 public class NewDutchCostumer extends Costumer {
 	private int sleepyTimer;
 
-	public NewDutchCostumer(Route<Buyzone> location) {
+	public NewDutchCostumer(Route location) {
 		super(location);
 		this.sleepyTimer = getNextSleepAmount();
 	}

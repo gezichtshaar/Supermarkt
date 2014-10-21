@@ -1,10 +1,10 @@
 package Actors;
 
 import Supermarket.Supermarket;
-import Interfaces.Person;
+import Interfaces.Actor;
 import Interfaces.Task;
 
-public class Employee implements Person {
+public class Employee implements Actor {
 	private Task task;
 
 	public Employee(Task task) {

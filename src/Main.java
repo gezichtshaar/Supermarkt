@@ -1,24 +1,24 @@
 import java.util.Scanner;
 
-import Interfaces.Buyzone;
 import Models.Department;
+import Models.ProductTypes;
 import Models.Route;
 import Models.Aisle;
 import Supermarket.Supermarket;
 
 public class Main {
-	public static void main(String[] args) {
-
-		@SuppressWarnings("unchecked")
-		Supermarket supermarket = new Supermarket(
+	private static final Route SUPERMARKT_LAYOUT = Route.BuildRoute(
 				new Route[] {
-					new Route<Buyzone>(new Aisle()),
-					new Route<Buyzone>(new Aisle()),
-					new Route<Buyzone>(new Aisle()),
-					new Route<Buyzone>(new Department()) }, 
+					new Route(new Aisle()),
+					new Route(new Aisle()),
+					new Route(new Aisle()),
+					new Route(new Department(ProductTypes.BREAD)) }, 
 				new int[][] {
 					{ 0, 1, 3 },
 					{ 0, 2, 3 } });
+	
+	public static void main(String[] args) {
+		Supermarket supermarket = new Supermarket(SUPERMARKT_LAYOUT);
 
 		new Thread(supermarket).start();
 

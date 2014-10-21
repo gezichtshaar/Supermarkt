@@ -4,22 +4,21 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import Interfaces.Buyzone;
-import Interfaces.Person;
-import Models.Route;
+import Interfaces.Actor;
 import Models.Product;
+import Models.Route;
 import Supermarket.Supermarket;
 
-public abstract class Costumer implements Person {
-	protected Route<Buyzone> location;
-	private List<Product> shoppingCart;
+public abstract class Costumer implements Actor {
+	protected Route location;
+	protected List<Product> shoppingCart;
 	private BigDecimal balance;
 
-	public Costumer(Route<Buyzone> location) {
+	public Costumer(Route location) {
 		this(location, 10f);
 	}
 
-	public Costumer(Route<Buyzone> location, float balance) {
+	public Costumer(Route location, float balance) {
 		this.location = location;
 		this.shoppingCart = new ArrayList<Product>();
 		this.balance = new BigDecimal(balance);
@@ -38,7 +37,7 @@ public abstract class Costumer implements Person {
 
 	private final void postAct(Supermarket supermarket) {
 		if (location == null) {
-			supermarket.afrekenen(this);
+			supermarket.checkout(this);
 		}
 	}
 

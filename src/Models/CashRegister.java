@@ -17,9 +17,9 @@ public class CashRegister implements Task {
 		Costumer costumer = supermarket.getKassaQueue().poll();
 		if (costumer != null) {
 			for (Product product : costumer.getShoppingCart()) {
-				if (costumer.getBalance().compareTo(product.getPrijs()) > 0) {
-					balance = balance.add(product.getPrijs());
-					costumer.takeFromBalance(product.getPrijs());
+				if (costumer.getBalance().compareTo(product.getPrice()) > 0) {
+					balance = balance.add(product.getPrice());
+					costumer.takeFromBalance(product.getPrice());
 				} else {
 					supermarket.getMagazijn().addProduct(product);
 				}

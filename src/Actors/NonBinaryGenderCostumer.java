@@ -1,12 +1,11 @@
 package Actors;
 
-import Interfaces.Buyzone;
 import Models.Route;
 import Supermarket.Supermarket;
 
 public class NonBinaryGenderCostumer extends Costumer {
 
-	public NonBinaryGenderCostumer(Route<Buyzone> location) {
+	public NonBinaryGenderCostumer(Route location) {
 		super(location);
 	}
 
