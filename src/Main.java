@@ -1,5 +1,7 @@
-import java.util.Scanner;
+import javax.swing.SwingUtilities;
 
+import Controllers.MainController;
+import Graphics.MainWindow;
 import Models.Department;
 import Models.ProductTypes;
 import Models.Route;
@@ -18,22 +20,17 @@ public class Main {
 					{ 0, 2, 3 } });
 	
 	public static void main(String[] args) {
-		Supermarket supermarket = new Supermarket(SUPERMARKT_LAYOUT);
-
-		new Thread(supermarket).start();
-
-		Scanner console = new Scanner(System.in);
-
-		while (supermarket.isRunning() && console.hasNextLine()) {
-			switch (console.nextLine()) {
-			case "q":
-				supermarket.stop();
-				break;
-			case "stats":
-				System.out.println(supermarket.toString());
-				break;
-			}
-		}
-		console.close();
+		SwingUtilities.invokeLater(new Runnable() {
+	        @Override
+		    public void run() {
+				Supermarket supermarket = new Supermarket(SUPERMARKT_LAYOUT);
+				MainController controller = new MainController(supermarket);
+				MainWindow mainWindow = new MainWindow(controller);
+				controller.addView(mainWindow);
+				
+				mainWindow.show();
+				new Thread(supermarket).start();
+	        }
+		});
 	}
 }

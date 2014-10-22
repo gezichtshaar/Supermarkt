@@ -19,10 +19,10 @@ public abstract class Costumer implements Actor {
 	private BigDecimal balance;
 
 	public Costumer(Route location) {
-		this(location, 10f);
+		this(location, 10);
 	}
 
-	public Costumer(Route location, float balance) {
+	public Costumer(Route location, double balance) {
 		this.location = location;
 		this.wishlist = new HashMap<ProductTypes, Integer>();
 		this.shoppingCart = new ArrayList<Product>();

@@ -1,23 +1,27 @@
 package Supermarket;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Observable;
 import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import sun.misc.JavaAWTAccess;
 import Actors.Costumer;
+import Actors.NewDutchCostumer;
 import Interfaces.Actor;
 import Interfaces.Task;
 import Models.CashRegister;
 import Models.Route;
 import Models.Storage;
 
-public class Supermarket implements Runnable {
+public class Supermarket extends Observable implements Runnable {
 	private volatile boolean running;
 
 	private Database database;
 
-	private Set<Actor> actors;
+	private volatile Set<Actor> actors;
 
 	private Storage storage;
 	private Route route;
@@ -29,7 +33,7 @@ public class Supermarket implements Runnable {
 		this.running = false;
 		this.database = new Database();
 
-		this.actors = new HashSet<Actor>();
+		this.actors = Collections.synchronizedSet(new HashSet<Actor>());
 
 		this.storage = new Storage();
 		this.route = route;
@@ -40,13 +44,15 @@ public class Supermarket implements Runnable {
 	}
 
 	private void tick() {
+		setChanged();
 		for (Actor actor : actors) {
 			actor.act(this);
 		}
 		// save to database
+		notifyObservers();
 	}
 
-	public void run() { // maybe threading
+	public void run() {
 		running = true;
 		while (running) {
 			tick();
@@ -87,5 +93,9 @@ public class Supermarket implements Runnable {
 	@Override
 	public synchronized String toString() {
 		return String.format("Aantal klanten: %d", actors.size());
+	}
+	
+	public synchronized void newCostumer() {
+		actors.add(new NewDutchCostumer(route));
 	}
 }
