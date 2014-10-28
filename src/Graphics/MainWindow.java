@@ -18,6 +18,7 @@ public class MainWindow implements Observer {
 	private MainController controller;
 	private JFrame frame;
 	private JTextArea textArea;
+	private JButton btnStop;
 
 	/**
 	 * Create the application.
@@ -50,6 +51,16 @@ public class MainWindow implements Observer {
 		});
 		btnNewCost.setBounds(10, 121, 91, 23);
 		frame.getContentPane().add(btnNewCost);
+		
+		btnStop = new JButton("stop");
+		btnStop.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				controller.stopSim();
+			}
+		});
+		btnStop.setBounds(111, 121, 91, 23);
+		frame.getContentPane().add(btnStop);
 	}
 
 	public void show() {

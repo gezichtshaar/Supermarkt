@@ -18,7 +18,7 @@ public class NewDutchCostumer extends Costumer {
 	@Override
 	public void doAct(Supermarket supermarket) {
 		if (--sleepyTimer <= 0) {
-			location = location.getRandomRoute();
+			route = route.getRandomRoute();
 			sleepyTimer = getNextSleepAmount();
 		}
 	}

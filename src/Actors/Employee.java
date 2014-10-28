@@ -15,7 +15,7 @@ public class Employee implements Actor {
 		if (task != null) {
 			task.update(supermarket);
 		} else {
-			task = supermarket.getTask();
+			//task = supermarket.getTask();
 		}
 	}
 }

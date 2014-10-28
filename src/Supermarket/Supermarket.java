@@ -7,7 +7,6 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import sun.misc.JavaAWTAccess;
 import Actors.Costumer;
 import Actors.NewDutchCostumer;
 import Interfaces.Actor;
@@ -20,13 +19,13 @@ public class Supermarket extends Observable implements Runnable {
 	private volatile boolean running;
 
 	private Database database;
-
+	
 	private volatile Set<Actor> actors;
 
 	private Storage storage;
 	private Route route;
 
-	private Queue<Costumer> kassaQueue;
+	private Queue<Costumer> cashRegisterQueue;
 	private CashRegister[] cashRegisters;
 
 	public Supermarket(Route route) {
@@ -38,39 +37,30 @@ public class Supermarket extends Observable implements Runnable {
 		this.storage = new Storage();
 		this.route = route;
 
-		this.kassaQueue = new ConcurrentLinkedQueue<Costumer>();
-		this.cashRegisters = new CashRegister[] { new CashRegister(),
-				new CashRegister(), new CashRegister(), new CashRegister() };
+		this.cashRegisterQueue = new ConcurrentLinkedQueue<Costumer>();
+		this.cashRegisters = new CashRegister[] { new CashRegister(this.cashRegisterQueue),
+				new CashRegister(this.cashRegisterQueue), new CashRegister(this.cashRegisterQueue), new CashRegister(this.cashRegisterQueue) };
 	}
 
 	private void tick() {
-		setChanged();
+		database.initCommit();
 		for (Actor actor : actors) {
 			actor.act(this);
 		}
-		// save to database
-		notifyObservers();
+		database.doCommit();
 	}
 
 	public void run() {
 		running = true;
 		while (running) {
+			setChanged();
 			tick();
+			notifyObservers();
 		}
+		database.close();
 	}
 
-	public void checkout(Costumer costumer) {
-		if (actors.contains(costumer)) {
-			actors.remove(costumer);
-			kassaQueue.add(costumer);
-		}
-	}
-
-	public Queue<Costumer> getKassaQueue() {
-		return kassaQueue;
-	}
-
-	public Storage getMagazijn() {
+	public Storage getStorage() {
 		return storage;
 	}
 
@@ -85,17 +75,18 @@ public class Supermarket extends Observable implements Runnable {
 	public boolean isRunning() {
 		return running;
 	}
-
-	public Task getTask() { // Geef een taak terug die gedaan moet worden
-		return null;
+	
+	public void checkout(Costumer costumer) {
+		if (!cashRegisterQueue.contains(costumer)) {
+			actors.remove(costumer);
+			cashRegisterQueue.add(costumer);
+		}
 	}
 
 	@Override
-	public synchronized String toString() {
-		return String.format("Aantal klanten: %d", actors.size());
-	}
-	
-	public synchronized void newCostumer() {
-		actors.add(new NewDutchCostumer(route));
+	public String toString() {
+		synchronized (actors) {
+			return String.format("Aantal klanten: %d", actors.size());
+		}
 	}
 }

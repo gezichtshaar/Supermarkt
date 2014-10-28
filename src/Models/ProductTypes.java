@@ -2,9 +2,16 @@ package Models;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ProductTypes")
 public enum ProductTypes {
 	BREAD("Brood", 2f);
 	
+	@Column(name = "Name")
 	private final String name;
 	private BigDecimal price;
 	private BigDecimal discount;

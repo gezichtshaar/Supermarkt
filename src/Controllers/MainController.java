@@ -21,6 +21,10 @@ public class MainController {
 	}
 
 	public void addCostumer() {
-		supermarket.newCostumer();
+		//supermarket.newCostumer();
+	}
+	
+	public void stopSim() {
+		supermarket.stop();
 	}
 }

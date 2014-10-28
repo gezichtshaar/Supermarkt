@@ -20,4 +20,8 @@ public class Product {
 	public BigDecimal getRealPrice() {
 		return productType.getPrice().multiply(productType.getDiscount());
 	}
+
+	public ProductTypes getType() {
+		return productType;
+	}
 }
