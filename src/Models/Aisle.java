@@ -17,7 +17,7 @@ import Supermarket.Supermarket;
 @Table(name = "AISLE")
 public class Aisle implements Task, Buyzone {
 	@Column(name = "SHELVES")
-	private List<Shelf> shelves;
+	protected List<Shelf> shelves;
 	private int lastUpdatedShelf;
 	
 	public Aisle () {
