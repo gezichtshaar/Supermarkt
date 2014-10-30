@@ -6,8 +6,8 @@ import Supermarket.Supermarket;
 public class DiscountAisle extends Aisle {
 
 	public DiscountAisle() {
-		for (int n = 0; n < Options.DISCOUNTAISLE_SHELF_COUNT && ProductTypes.HasDiscountProducts(); n++) {
-			shelves.add(new Shelf(ProductTypes.GetRandomDiscountProductType()));
+		for (int n = 0; n < Options.DISCOUNTAISLE_SHELF_COUNT && Product.Types.HasDiscountProducts(); n++) {
+			shelves.add(new Shelf(Product.Types.GetRandomDiscountProductType()));
 		}
 	}
 	

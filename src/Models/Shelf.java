@@ -4,22 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import Supermarket.Options;
 
-@Entity
-@Table(name = "SHELF")
 class Shelf {
-	@Column(name = "ProductType")
-	private ProductTypes productType;
-	
-	@Column(name = "Products")
+	private Product.Types productType;
 	private Stack<Product> products;
 
-	public Shelf(ProductTypes productType) {
+	public Shelf(Product.Types productType) {
 		this.productType = productType;
 		this.products = new Stack<Product>();
 	}
@@ -49,7 +40,7 @@ class Shelf {
 		return productList;
 	}
 	
-	public boolean hasProduct(ProductTypes productType) {
+	public boolean hasProduct(Product.Types productType) {
 		return this.productType == productType && !products.isEmpty();
 	}
 	
@@ -65,7 +56,7 @@ class Shelf {
 		return giveProducts;
 	}
 
-	public ProductTypes getProductType() {
+	public Product.Types getProductType() {
 		return productType;
 	}
 }

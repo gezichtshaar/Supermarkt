@@ -3,32 +3,25 @@ package Models;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import Supermarket.Options;
 import Actors.Costumer;
 import Interfaces.Buyzone;
 import Interfaces.Task;
 import Supermarket.Supermarket;
 
-@Entity
-@Table(name = "AISLE")
 public class Aisle implements Task, Buyzone {
-	@Column(name = "SHELVES")
 	protected List<Shelf> shelves;
 	private int lastUpdatedShelf;
 	
 	public Aisle () {
-		this(new ProductTypes[] {});
+		this(new Product.Types[] {});
 	}
 
-	public Aisle(ProductTypes[] productTypes) {
+	public Aisle(Product.Types[] productTypes) {
 		this.shelves = new ArrayList<Shelf>();
 		this.lastUpdatedShelf = 0;
 		
-		for(ProductTypes productType : productTypes) {
+		for(Product.Types productType : productTypes) {
 			addShelf(new Shelf(productType));
 		}
 	}
@@ -50,7 +43,7 @@ public class Aisle implements Task, Buyzone {
 	}
 
 	@Override
-	public boolean hasProduct(ProductTypes productType) {
+	public boolean hasProduct(Product.Types productType) {
 		for(Shelf shelf : shelves) {
 			if (shelf.hasProduct(productType)) {
 				return true;
@@ -71,7 +64,18 @@ public class Aisle implements Task, Buyzone {
 
 	@Override
 	public List<Product> takeProducts(Costumer costumer,
-			ProductTypes productType, int amount) {
+			Product.Types productType, int amount) {
 		return null;
+	}
+
+	@Override
+	public int getPriority() {
+		int priority = 0;
+		for (Shelf shelf : shelves) {
+			if (shelf.productCount() < Options.SHELF_FILL_THRESHOLD) {
+				priority += Options.SHELF_FILL_PRIORITY;
+			}
+		}
+		return priority;
 	}
 }

@@ -9,13 +9,12 @@ import java.util.Map;
 import Interfaces.Actor;
 import Interfaces.Buyzone;
 import Models.Product;
-import Models.ProductTypes;
 import Models.Route;
 import Supermarket.Supermarket;
 
 public abstract class Costumer implements Actor {
 	protected Route route;
-	protected Map<ProductTypes, Integer> wishlist;
+	protected Map<Product.Types, Integer> wishlist;
 	protected List<Product> shoppingCart;
 	private BigDecimal balance;
 
@@ -25,7 +24,7 @@ public abstract class Costumer implements Actor {
 
 	public Costumer(Route location, double balance) {
 		this.route = location;
-		this.wishlist = new HashMap<ProductTypes, Integer>();
+		this.wishlist = new HashMap<Product.Types, Integer>();
 		this.shoppingCart = new ArrayList<Product>();
 		this.balance = new BigDecimal(balance);
 	}
@@ -51,7 +50,7 @@ public abstract class Costumer implements Actor {
 	}
 	
 	private boolean wantsProductFromBuyzone(Buyzone buyzone) {
-		for(ProductTypes productType : this.wishlist.keySet()) {
+		for(Product.Types productType : this.wishlist.keySet()) {
 			if (buyzone.hasProduct(productType)) {
 				return true;
 			}
@@ -60,7 +59,7 @@ public abstract class Costumer implements Actor {
 	}
 	
 	public final void update(Buyzone buyzone) {
-		for(ProductTypes productType : this.wishlist.keySet()) {
+		for(Product.Types productType : this.wishlist.keySet()) {
 			if (buyzone.hasProduct(productType)) {
 				this.addProducts(buyzone.takeProducts(this, productType, wishlist.get(productType)));
 			}
@@ -85,5 +84,9 @@ public abstract class Costumer implements Actor {
 	
 	public Route getRoute() {
 		return route;
+	}
+
+	public void clear() {
+		
 	}
 }

@@ -14,7 +14,7 @@ public class Department implements Task, Buyzone {
 	private Shelf shelf;
 	private Queue<Costumer> costumerQueue;
 
-	public Department(ProductTypes productType) {
+	public Department(Product.Types productType) {
 		this.shelf = new Shelf(productType);
 		this.costumerQueue = new ConcurrentLinkedQueue<Costumer>();
 	}
@@ -41,7 +41,7 @@ public class Department implements Task, Buyzone {
 	}
 
 	@Override
-	public boolean hasProduct(ProductTypes productType) {
+	public boolean hasProduct(Product.Types productType) {
 		return shelf.hasProduct(productType);
 	}
 
@@ -59,11 +59,16 @@ public class Department implements Task, Buyzone {
 
 	@Override
 	public List<Product> takeProducts(Costumer costumer,
-			ProductTypes productType, int amount) {
+			Product.Types productType, int amount) {
 		if (costumer == costumerQueue.peek()) {
 			costumerQueue.poll();
 			return shelf.takeProducts(amount);
 		}
 		return null;
+	}
+
+	@Override
+	public int getPriority() {
+		return costumerQueue.size() * Options.DEPARTMENT_PRIORITY;
 	}
 }

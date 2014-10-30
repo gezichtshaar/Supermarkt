@@ -7,13 +7,13 @@ import java.util.Map;
 import java.util.Stack;
 
 public class Storage {
-	private Map<ProductTypes, Stack<Product>> products;
+	private Map<Product.Types, Stack<Product>> products;
 
 	public Storage() {
-		this.products = new HashMap<ProductTypes, Stack<Product>>();
+		this.products = new HashMap<Product.Types, Stack<Product>>();
 	}
 	
-	public void productType(ProductTypes productType) {
+	public void productType(Product.Types productType) {
 		if (!products.containsKey(productType)) {
 			products.put(productType, new Stack<Product>());
 		}
@@ -25,7 +25,7 @@ public class Storage {
 		}
 	}
 	
-	public List<Product> takeProducts(ProductTypes productType, int amount) {
+	public List<Product> takeProducts(Product.Types productType, int amount) {
 		List<Product> productList = new ArrayList<Product>();
 		for (int n = 0; n < amount && products.containsKey(productType); n++) {
 			productList.add(this.products.get(productType).pop());

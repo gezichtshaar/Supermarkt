@@ -1,14 +1,11 @@
 package Supermarket;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Observable;
-import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 import Actors.Costumer;
-import Actors.NewDutchCostumer;
+import Actors.StudentCostumer;
 import Interfaces.Actor;
 import Interfaces.Task;
 import Models.CashRegister;
@@ -17,29 +14,30 @@ import Models.Storage;
 
 public class Supermarket extends Observable implements Runnable {
 	private volatile boolean running;
+	private volatile boolean paused;
 
-	private Database database;
-	
+	private final Database database;
+
 	private volatile Set<Actor> actors;
+	private TaskManager taskManager;
 
-	private Storage storage;
+	private final Storage storage;
 	private Route route;
 
-	private Queue<Costumer> cashRegisterQueue;
-	private CashRegister[] cashRegisters;
+	private final CashRegister[] cashRegisters;
 
 	public Supermarket(Route route) {
 		this.running = false;
+		this.paused = false;
 		this.database = new Database();
 
-		this.actors = Collections.synchronizedSet(new HashSet<Actor>());
+		this.actors = new CopyOnWriteArraySet<Actor>();
 
 		this.storage = new Storage();
 		this.route = route;
 
-		this.cashRegisterQueue = new ConcurrentLinkedQueue<Costumer>();
-		this.cashRegisters = new CashRegister[] { new CashRegister(this.cashRegisterQueue),
-				new CashRegister(this.cashRegisterQueue), new CashRegister(this.cashRegisterQueue), new CashRegister(this.cashRegisterQueue) };
+		this.cashRegisters = new CashRegister[] { new CashRegister(),
+				new CashRegister(), new CashRegister(), new CashRegister() };
 	}
 
 	private void tick() {
@@ -47,6 +45,7 @@ public class Supermarket extends Observable implements Runnable {
 		for (Actor actor : actors) {
 			actor.act(this);
 		}
+		
 		database.doCommit();
 	}
 
@@ -54,8 +53,15 @@ public class Supermarket extends Observable implements Runnable {
 		running = true;
 		while (running) {
 			setChanged();
-			tick();
+			if (!paused) {
+				tick();
+			}
 			notifyObservers();
+			
+			try {
+				Thread.sleep(Options.SUPERMARKET_TICK_SLEEP);
+			} catch (InterruptedException e) {
+			}
 		}
 		database.close();
 	}
@@ -72,21 +78,33 @@ public class Supermarket extends Observable implements Runnable {
 		this.running = false;
 	}
 
+	public void switchPause() {
+		this.paused = !paused;
+	}
+
 	public boolean isRunning() {
 		return running;
 	}
-	
+
 	public void checkout(Costumer costumer) {
-		if (!cashRegisterQueue.contains(costumer)) {
-			actors.remove(costumer);
-			cashRegisterQueue.add(costumer);
-		}
+		actors.remove(costumer);
+		cashRegisters[0].addCostumer(costumer);
+	}
+
+	public Task getTask() {
+		return taskManager.getTask();
+	}
+
+	public void newCostumer() {
+		actors.add(new StudentCostumer(route));
+	}
+
+	public boolean isPaused() {
+		return paused;
 	}
 
 	@Override
 	public String toString() {
-		synchronized (actors) {
-			return String.format("Aantal klanten: %d", actors.size());
-		}
+		return String.format("Aantal klanten: %d", actors.size());
 	}
 }

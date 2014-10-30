@@ -14,11 +14,12 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class MainWindow implements Observer {
+public class MainWindow implements Observer, Runnable {
 	private MainController controller;
 	private JFrame frame;
 	private JTextArea textArea;
 	private JButton btnStop;
+	private JButton btnPaused;
 
 	/**
 	 * Create the application.
@@ -39,7 +40,7 @@ public class MainWindow implements Observer {
 
 		textArea = new JTextArea();
 		textArea.setEditable(false);
-		textArea.setBounds(10, 11, 269, 99);
+		textArea.setBounds(10, 11, 293, 99);
 		frame.getContentPane().add(textArea);
 
 		JButton btnNewCost = new JButton("new Cost");
@@ -59,18 +60,38 @@ public class MainWindow implements Observer {
 				controller.stopSim();
 			}
 		});
-		btnStop.setBounds(111, 121, 91, 23);
+		btnStop.setBounds(212, 121, 91, 23);
 		frame.getContentPane().add(btnStop);
+		
+		btnPaused = new JButton(getPauseBtnText());
+		btnPaused.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				controller.switchPause();
+			}
+		});
+		btnPaused.setBounds(111, 121, 91, 23);
+		frame.getContentPane().add(btnPaused);
 	}
 
 	public void show() {
 		frame.setVisible(true);
 	}
 
+	public String getPauseBtnText() {
+		 return controller.isPaused() ? "Unpause": "Pause";
+	}
+
 	@Override
 	public void update(Observable model, Object arg) {
 		if (model.getClass() == Supermarket.class) {
-			textArea.setText(model.toString());
+			textArea.setText(controller.getStats());
+			btnPaused.setText(getPauseBtnText());
 		}
+	}
+	
+	@Override
+	public void run() {
+		this.show();
 	}
 }

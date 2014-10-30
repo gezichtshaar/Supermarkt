@@ -21,10 +21,22 @@ public class MainController {
 	}
 
 	public void addCostumer() {
-		//supermarket.newCostumer();
+		supermarket.newCostumer();
 	}
 	
 	public void stopSim() {
 		supermarket.stop();
+	}
+	
+	public void switchPause() {
+		supermarket.switchPause();
+	}
+
+	public String getStats() {
+		return supermarket.toString();
+	}
+	
+	public boolean isPaused() {
+		return supermarket.isPaused();
 	}
 }

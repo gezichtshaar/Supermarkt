@@ -2,16 +2,16 @@ package Actors;
 
 import java.util.Random;
 
-import Models.ProductTypes;
 import Models.Route;
 import Supermarket.Supermarket;
+import Models.Product;
 
 public class NewDutchCostumer extends Costumer {
 	private int sleepyTimer;
 
 	public NewDutchCostumer(Route location) {
 		super(location);
-		wishlist.put(ProductTypes.BREAD, 2);
+		wishlist.put(Product.Types.BREAD, 2);
 		this.sleepyTimer = getNextSleepAmount();
 	}
 
