@@ -45,7 +45,7 @@ public class TaskManager implements Actor {
 		update();
 		Employee employee;
 		for(Task task: tasks.keySet()) {
-			if (tasks.get(task).size() < task.getMaxEmployeeCount() &&  task.getPriority() > Options.TASKMANAGER_SWITCH_TASK_TRESHHOLD) {
+			if (tasks.get(task).size() < task.getMaxEmployeeCount() &&  task.getPriority() > Options.TASKMANAGER_SWITCH_TASK_TRESHOLD) {
 				employee = getEmployeeWithLowestPrioty();
 				if (employee !=null) {
 					employee.setTask(task);

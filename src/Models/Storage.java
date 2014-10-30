@@ -13,16 +13,15 @@ public class Storage {
 		this.products = new HashMap<Product.Types, Stack<Product>>();
 	}
 	
-	public void productType(Product.Types productType) {
+	public void addProductType(Product.Types productType) {
 		if (!products.containsKey(productType)) {
 			products.put(productType, new Stack<Product>());
 		}
 	}
 
 	public void addProduct(Product product) {
-		if (products.containsKey(product.getType())) {
-			products.get(product.getType()).add(product);
-		}
+		addProductType(product.getType());
+		products.get(product.getType()).add(product);
 	}
 	
 	public List<Product> takeProducts(Product.Types productType, int amount) {

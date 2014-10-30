@@ -69,7 +69,12 @@ public class Department implements Task, Buyzone {
 
 	@Override
 	public int getPriority() {
-		return costumerQueue.size() * Options.DEPARTMENT_PRIORITY;
+		return costumerQueue.size() * Options.DEPARTMENT_PRIORITY + (shelf.productCount() < Options.SHELF_FILL_THRESHOLD ? 1 : 0);
+	}
+
+	@Override
+	public int getMaxEmployeeCount() {
+		return Options.DEPARTMENT_MAX_EMPLOYEES;
 	}
 	
 	@Override
@@ -77,8 +82,4 @@ public class Department implements Task, Buyzone {
 		return String.format("Department: %d", getPriority());
 	}
 
-	@Override
-	public int getMaxEmployeeCount() {
-		return Options.DEPARTMENT_MAX_EMPLOYEES;
-	}
 }
