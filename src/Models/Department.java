@@ -76,4 +76,9 @@ public class Department implements Task, Buyzone {
 	public String toString() {
 		return String.format("Department: %d", getPriority());
 	}
+
+	@Override
+	public int getMaxEmployeeCount() {
+		return Options.DEPARTMENT_MAX_EMPLOYEES;
+	}
 }

@@ -42,4 +42,9 @@ public class CashRegister implements Task {
 	public int getPriority() {
 		return queue.size() * Options.CASHREGISTER_PRIORITY;
 	}
+
+	@Override
+	public int getMaxEmployeeCount() {
+		return 1;
+	}
 }

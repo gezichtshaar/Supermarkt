@@ -20,4 +20,7 @@ public final class Options {
 	public static final int CARRIAGE_MAX_PRODUCT_TYPES = 5;
 	public static final int CARRIAGE_MAX_PRODUCTS = 20;
 	public static final int TASKMANAGER_SWITCH_TASK_TRESHHOLD = 10;
+	
+	public static final int DEPARTMENT_MAX_EMPLOYEES = 2;
+	public static final int AISLE_MAX_EMPLOYEES = 5;
 }

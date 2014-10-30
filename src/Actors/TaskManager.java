@@ -1,6 +1,6 @@
 package Actors;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import Interfaces.Actor;
@@ -11,31 +11,25 @@ import Supermarket.Supermarket;
 public class TaskManager implements Actor {
 	private List<Employee> employees;
 	
-	private final List<Task> allTasks;
-	private List<Task> openTasks;
+	private final HashMap<Task, List<Employee>> tasks;
 
 	public TaskManager(List<Employee> employees, List<Task> tasks) {
 		this.employees = employees;
-		this.allTasks = tasks;
-		this.openTasks = new ArrayList<>();
+		this.tasks = new HashMap<Task, List<Employee>>();
 	}
 	
-	public void update(List<Employee> employees) {
-		resetOpenTasks();
+	public void update() {
 		for(Employee employee : employees) {
-			this.openTasks.remove(employee.getTask());
+			if (tasks.containsKey(employee.getTask()) && employee.getTask().getMaxEmployeeCount() < tasks.get(employee.getTask()).size()) {
+				tasks.get(employee.getTask()).add(employee);
+			}
 		}
-	}
-	
-	private void resetOpenTasks() {
-		this.openTasks.clear();
-		this.openTasks.addAll(allTasks);
 	}
 	
 	public Task getTask() {
 		Task task = null;
-		for(Task currentTask : openTasks) {
-			if (task == null || currentTask.getPriority() > task.getPriority()) {
+		for(Task currentTask : tasks.keySet()) {
+			if (task == null || task.getMaxEmployeeCount() < tasks.get(task).size() && currentTask.getPriority() > task.getPriority()) {
 				task = currentTask;
 			}
 		}
@@ -48,9 +42,10 @@ public class TaskManager implements Actor {
 
 	@Override
 	public void act(Supermarket supermarket) {
+		update();
 		Employee employee;
-		for(Task task: openTasks) {
-			if (task.getPriority() > Options.TASKMANAGER_SWITCH_TASK_TRESHHOLD) {
+		for(Task task: tasks.keySet()) {
+			if (tasks.get(task).size() < task.getMaxEmployeeCount() &&  task.getPriority() > Options.TASKMANAGER_SWITCH_TASK_TRESHHOLD) {
 				employee = getEmployeeWithLowestPrioty();
 				if (employee !=null) {
 					employee.setTask(task);

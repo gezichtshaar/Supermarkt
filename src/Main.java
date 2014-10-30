@@ -1,5 +1,3 @@
-import javax.swing.SwingUtilities;
-
 import Controllers.MainController;
 import Graphics.MainWindow;
 import Models.Department;

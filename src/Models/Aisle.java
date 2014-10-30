@@ -83,4 +83,9 @@ public class Aisle implements Task, Buyzone {
 	public String toString() {
 		return String.format("Aisle: %d", getPriority());
 	}
+
+	@Override
+	public int getMaxEmployeeCount() {
+		return Options.AISLE_MAX_EMPLOYEES;
+	}
 }

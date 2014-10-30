@@ -5,28 +5,25 @@ import Interfaces.Actor;
 import Interfaces.Task;
 
 public class Employee implements Actor {
+	private TaskManager taskManager;
 	private Task task;
 
-	private Employee(Task task) {
-		this.task = task;
+	public Employee(TaskManager taskManager) {
+		this.taskManager = taskManager;
+		this.taskManager.register(this);
+		this.task = taskManager.getTask();
 	}
 
 	public void act(Supermarket supermarket) {
 		if (task != null && task.getPriority() > 0) {
 			task.update(supermarket);
 		} else {
-			task = supermarket.getTask();
+			task = taskManager.getTask();
 		}
 	}
 
 	public Task getTask() {
 		return task;
-	}
-	
-	public static Employee Create(TaskManager taskManager) {
-		Employee employee = new Employee(taskManager.getTask());
-		taskManager.register(employee);
-		return employee;
 	}
 
 	public void setTask(Task task) {

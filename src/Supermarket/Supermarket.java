@@ -52,7 +52,7 @@ public class Supermarket extends Observable implements Runnable {
 		actors.add(taskManager);
 		actors.add(new Carriage());
 		for (int n = 0; n < Options.SUPERMARKET_EMPLOYEES; n++) {
-			actors.add(Employee.Create(taskManager));
+			actors.add(new Employee(taskManager));
 		}
 		this.running = true;
 	}
@@ -127,11 +127,7 @@ public class Supermarket extends Observable implements Runnable {
 		actors.remove(costumer);
 		cashRegisters[0].addCostumer(costumer);
 	}
-
-	public Task getTask() {
-		return taskManager.getTask();
-	}
-
+	
 	public void newCostumer() {
 		actors.add(new StudentCostumer(route));
 	}
