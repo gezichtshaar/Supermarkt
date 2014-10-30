@@ -28,7 +28,8 @@ public class Product {
 		return productType;
 	}
 	
-	private static final List<Types> discountProducts = new ArrayList<Types>();
+	private static final List<Types> ALL_PRODUCTS = new ArrayList<Types>();
+	private static final List<Types> DISCOUNT_PRODUCTS = new ArrayList<Types>();
 	public enum Types {
 		BREAD("Brood", 2f);
 		
@@ -44,6 +45,8 @@ public class Product {
 			this.name = name;
 			this.price = new BigDecimal(price);
 			this.setDiscount(new BigDecimal(discount));
+			
+			ALL_PRODUCTS.add(this);
 		}
 		
 		public String getName() {
@@ -65,9 +68,9 @@ public class Product {
 		public void setDiscount(BigDecimal discount) {
 			this.discount = discount;
 			if (!this.hasDiscount()) {
-				discountProducts.remove(this);
+				DISCOUNT_PRODUCTS.remove(this);
 			}else{
-				discountProducts.add(this);
+				DISCOUNT_PRODUCTS.add(this);
 			}
 		}
 		
@@ -76,14 +79,21 @@ public class Product {
 		}
 		
 		public static Types GetRandomDiscountProductType() {
-			if (discountProducts.size() > 0) {
-				return discountProducts.get(new Random().nextInt(discountProducts.size()));
+			if (DISCOUNT_PRODUCTS.size() > 0) {
+				return DISCOUNT_PRODUCTS.get(new Random().nextInt(DISCOUNT_PRODUCTS.size()));
 			}
 			return null;
 		}
 
 		public static boolean HasDiscountProducts() {
-			return discountProducts.size() > 0;
+			return DISCOUNT_PRODUCTS.size() > 0;
+		}
+		
+		public static Types getRandomProductType() {
+			if (ALL_PRODUCTS.size() > 0) {
+				return ALL_PRODUCTS.get(new Random().nextInt(ALL_PRODUCTS.size()));
+			}
+			return null;
 		}
 		
 		@Override

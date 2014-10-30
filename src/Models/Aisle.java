@@ -78,4 +78,9 @@ public class Aisle implements Task, Buyzone {
 		}
 		return priority;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("Aisle: %d", getPriority());
+	}
 }

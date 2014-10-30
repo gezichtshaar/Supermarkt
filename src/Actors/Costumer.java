@@ -89,4 +89,9 @@ public abstract class Costumer implements Actor {
 	public void clear() {
 		
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("%d: %s", this.hashCode(), this.route.getLocation());
+	}
 }

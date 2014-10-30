@@ -1,11 +1,17 @@
 package Supermarket;
 
+import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
+import Actors.Carriage;
 import Actors.Costumer;
+import Actors.Employee;
+import Actors.NonBinaryGenderCostumer;
 import Actors.StudentCostumer;
+import Actors.TaskManager;
 import Interfaces.Actor;
 import Interfaces.Task;
 import Models.CashRegister;
@@ -32,6 +38,8 @@ public class Supermarket extends Observable implements Runnable {
 		this.database = new Database();
 
 		this.actors = new CopyOnWriteArraySet<Actor>();
+		this.taskManager = new TaskManager(new ArrayList<Employee>(),
+				new ArrayList<Task>());
 
 		this.storage = new Storage();
 		this.route = route;
@@ -40,24 +48,53 @@ public class Supermarket extends Observable implements Runnable {
 				new CashRegister(), new CashRegister(), new CashRegister() };
 	}
 
+	private void init() {
+		actors.add(taskManager);
+		actors.add(new Carriage());
+		for (int n = 0; n < Options.SUPERMARKET_EMPLOYEES; n++) {
+			actors.add(Employee.Create(taskManager));
+		}
+		this.running = true;
+	}
+
+	private void inviteCostumers() {
+		Costumer costumer;
+		for (int n = 0; n < new Random().nextInt(Options.SUPERMARKET_MAX_COSTUMER_INVITE); n++) {
+			switch (new Random().nextInt(1)) {
+			case 0:
+				costumer = new StudentCostumer(route);
+				break;
+			case 1:
+				costumer = new NonBinaryGenderCostumer(route);
+				break;
+			default:
+				costumer = null;
+			}
+			actors.add(costumer);
+		}
+	}
+
 	private void tick() {
 		database.initCommit();
+
+		inviteCostumers();
 		for (Actor actor : actors) {
+			System.out.println(actor);
 			actor.act(this);
 		}
-		
+
 		database.doCommit();
 	}
 
 	public void run() {
-		running = true;
+		init();
 		while (running) {
 			setChanged();
 			if (!paused) {
 				tick();
 			}
 			notifyObservers();
-			
+
 			try {
 				Thread.sleep(Options.SUPERMARKET_TICK_SLEEP);
 			} catch (InterruptedException e) {

@@ -1,6 +1,7 @@
 package Actors;
 
 import Interfaces.Actor;
+import Models.Product;
 import Models.Storage;
 import Supermarket.Options;
 import Supermarket.Supermarket;
@@ -9,7 +10,7 @@ public class Carriage implements Actor {
 	private int waitTime;
 	
 	public Carriage() {
-		this.waitTime = 0;
+		this.waitTime = Options.CARRIAGE_WAIT_TIME;
 	}
 
 	@Override
@@ -20,6 +21,11 @@ public class Carriage implements Actor {
 		}
 	}
 	
-	private void fillStorage(Storage storage) {	
+	private void fillStorage(Storage storage) {
+		for(int n = 0; n < Options.CARRIAGE_MAX_PRODUCT_TYPES; n++) {
+			for(int x = 0; x < Options.CARRIAGE_MAX_PRODUCTS; x++) {
+				storage.addProduct(new Product(Product.Types.getRandomProductType()));
+			}
+		}
 	}
 }

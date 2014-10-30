@@ -11,6 +11,8 @@ public class StudentCostumer extends Costumer {
 
 	@Override
 	protected void doAct(Supermarket supermarket) {
-		this.route = route.getRandomRoute();
+		if (!route.getLocation().inQueue(this)){
+			this.route = route.getRandomRoute();
+		}
 	}
 }

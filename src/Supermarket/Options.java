@@ -14,4 +14,10 @@ public final class Options {
 	public static final int CASHREGISTER_MAX_QUEUE = 4;
 	
 	public static final long SUPERMARKET_TICK_SLEEP = 500;
+	
+	public static final int SUPERMARKET_MAX_COSTUMER_INVITE = 20;
+	public static final int SUPERMARKET_EMPLOYEES = 10;
+	public static final int CARRIAGE_MAX_PRODUCT_TYPES = 5;
+	public static final int CARRIAGE_MAX_PRODUCTS = 20;
+	public static final int TASKMANAGER_SWITCH_TASK_TRESHHOLD = 10;
 }

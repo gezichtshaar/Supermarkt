@@ -1,7 +1,6 @@
 package Actors;
 
 import Supermarket.Supermarket;
-import Supermarket.TaskManager;
 import Interfaces.Actor;
 import Interfaces.Task;
 
@@ -28,5 +27,9 @@ public class Employee implements Actor {
 		Employee employee = new Employee(taskManager.getTask());
 		taskManager.register(employee);
 		return employee;
+	}
+
+	public void setTask(Task task) {
+		this.task = task;
 	}
 }

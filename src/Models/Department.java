@@ -71,4 +71,9 @@ public class Department implements Task, Buyzone {
 	public int getPriority() {
 		return costumerQueue.size() * Options.DEPARTMENT_PRIORITY;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("Department: %d", getPriority());
+	}
 }

@@ -1,12 +1,14 @@
-package Supermarket;
+package Actors;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Actors.Employee;
+import Interfaces.Actor;
 import Interfaces.Task;
+import Supermarket.Options;
+import Supermarket.Supermarket;
 
-public class TaskManager {
+public class TaskManager implements Actor {
 	private List<Employee> employees;
 	
 	private final List<Task> allTasks;
@@ -42,5 +44,28 @@ public class TaskManager {
 
 	public void register(Employee employee) {
 		employees.add(employee);
+	}
+
+	@Override
+	public void act(Supermarket supermarket) {
+		Employee employee;
+		for(Task task: openTasks) {
+			if (task.getPriority() > Options.TASKMANAGER_SWITCH_TASK_TRESHHOLD) {
+				employee = getEmployeeWithLowestPrioty();
+				if (employee !=null) {
+					employee.setTask(task);
+				}
+			}
+		}
+	}
+
+	private Employee getEmployeeWithLowestPrioty() {
+		Employee employee = null;
+		for(Employee currentemployee : employees) {
+			if (currentemployee.getTask().getPriority() < employee.getTask().getPriority()) {
+				employee = currentemployee;
+			}
+		}
+		return employee;
 	}
 }
