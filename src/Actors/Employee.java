@@ -15,6 +15,7 @@ public class Employee implements Actor {
 	}
 
 	public void act(Supermarket supermarket) {
+		System.out.println(task);
 		if (task != null && task.getPriority() > 0) {
 			task.update(supermarket);
 		} else {

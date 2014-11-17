@@ -1,6 +1,7 @@
 package Supermarket;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Random;
 import java.util.Set;
@@ -24,28 +25,38 @@ public class Supermarket extends Observable implements Runnable {
 
 	private final Database database;
 
-	private volatile Set<Actor> actors;
-	private TaskManager taskManager;
-
 	private final Storage storage;
 	private Route route;
 
 	private final CashRegister[] cashRegisters;
+	
+
+	private volatile Set<Actor> actors;
+	private TaskManager taskManager;
 
 	public Supermarket(Route route) {
 		this.running = false;
 		this.paused = false;
 		this.database = new Database();
 
-		this.actors = new CopyOnWriteArraySet<Actor>();
-		this.taskManager = new TaskManager(new ArrayList<Employee>(),
-				new ArrayList<Task>());
-
 		this.storage = new Storage();
 		this.route = route;
 
 		this.cashRegisters = new CashRegister[] { new CashRegister(),
 				new CashRegister(), new CashRegister(), new CashRegister() };
+		
+		this.actors = new CopyOnWriteArraySet<Actor>();
+		this.taskManager = new TaskManager(new ArrayList<Employee>(),
+				getTasks());
+		
+		init();
+		inviteCostumers();
+	}
+
+	private List<Task> getTasks() {
+		List<Task> tasks = route.<Task>toList();
+		tasks.add(cashRegisters[0]);
+		return tasks;
 	}
 
 	private void init() {
@@ -77,9 +88,8 @@ public class Supermarket extends Observable implements Runnable {
 	private void tick() {
 		database.initCommit();
 
-		inviteCostumers();
+		//inviteCostumers();
 		for (Actor actor : actors) {
-			System.out.println(actor);
 			actor.act(this);
 		}
 
@@ -87,7 +97,7 @@ public class Supermarket extends Observable implements Runnable {
 	}
 
 	public void run() {
-		init();
+		//init();
 		while (running) {
 			setChanged();
 			if (!paused) {

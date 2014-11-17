@@ -7,7 +7,7 @@ import Supermarket.Supermarket;
 public class StudentCostumer extends Costumer {
 
 	public StudentCostumer(Route location) {
-		super(location);
+		super(location, 20);
 		this.wishlist.put(Product.Types.BREAD, 3);
 	}
 

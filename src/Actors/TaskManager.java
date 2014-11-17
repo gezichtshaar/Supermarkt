@@ -1,5 +1,6 @@
 package Actors;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,6 +17,10 @@ public class TaskManager implements Actor {
 	public TaskManager(List<Employee> employees, List<Task> tasks) {
 		this.employees = employees;
 		this.tasks = new HashMap<Task, List<Employee>>();
+		
+		for (Task task : tasks) {
+			addTask(task);
+		}
 	}
 	
 	public void update() {
@@ -26,10 +31,16 @@ public class TaskManager implements Actor {
 		}
 	}
 	
+	private void addTask(Task task) {
+		if (!this.tasks.containsKey(task)) {
+			this.tasks.put(task, new ArrayList<Employee>());
+		}
+	}
+	
 	public Task getTask() {
 		Task task = null;
 		for(Task currentTask : tasks.keySet()) {
-			if (task == null || task.getMaxEmployeeCount() < tasks.get(task).size() && currentTask.getPriority() > task.getPriority()) {
+			if (task == null ||  tasks.get(task).size() < task.getMaxEmployeeCount() && currentTask.getPriority() > task.getPriority()) {
 				task = currentTask;
 			}
 		}
@@ -37,7 +48,9 @@ public class TaskManager implements Actor {
 	}
 
 	public void register(Employee employee) {
-		employees.add(employee);
+		if (!this.employees.contains(employee)) {
+			employees.add(employee);
+		}
 	}
 
 	@Override
@@ -57,7 +70,7 @@ public class TaskManager implements Actor {
 	private Employee getEmployeeWithLowestPrioty() {
 		Employee employee = null;
 		for(Employee currentemployee : employees) {
-			if (currentemployee.getTask().getPriority() < employee.getTask().getPriority()) {
+			if (employee != null && currentemployee.getTask().getPriority() < employee.getTask().getPriority()) {
 				employee = currentemployee;
 			}
 		}

@@ -13,6 +13,10 @@ public class Storage {
 		this.products = new HashMap<Product.Types, Stack<Product>>();
 	}
 	
+	private boolean hasProductType(Product.Types productType) {
+		return this.products.containsKey(productType) && this.products.get(productType).size() > 0;
+	}
+	
 	public void addProductType(Product.Types productType) {
 		if (!products.containsKey(productType)) {
 			products.put(productType, new Stack<Product>());
@@ -26,7 +30,7 @@ public class Storage {
 	
 	public List<Product> takeProducts(Product.Types productType, int amount) {
 		List<Product> productList = new ArrayList<Product>();
-		for (int n = 0; n < amount && products.containsKey(productType); n++) {
+		for (int n = 0; n < amount && hasProductType(productType); n++) {
 			productList.add(this.products.get(productType).pop());
 		}
 		return productList;

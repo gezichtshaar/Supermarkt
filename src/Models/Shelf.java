@@ -34,9 +34,9 @@ class Shelf {
 		for (Product product : productList) {
 			if (product.getType() == productType && productCount() < Options.SHELF_MAX_PRODUCTS) {
 				products.push(product);
-				productList.remove(product);
 			}
 		}
+		productList.removeAll(products);
 		return productList;
 	}
 	

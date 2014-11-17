@@ -10,7 +10,7 @@ public class NewDutchCostumer extends Costumer {
 	private int sleepyTimer;
 
 	public NewDutchCostumer(Route location) {
-		super(location);
+		super(location, 19);
 		wishlist.put(Product.Types.BREAD, 2);
 		this.sleepyTimer = getNextSleepAmount();
 	}

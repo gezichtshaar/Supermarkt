@@ -30,6 +30,21 @@ public class Route {
 		return location;
 	}
 	
+	public <T> List<T> toList() {
+		List<T> buyzones = new ArrayList<>();
+		toList(buyzones);
+		return buyzones;
+	}
+	
+	private <T> void toList(List<T> buyzones) {
+		if (!buyzones.contains(location)) {
+			buyzones.add((T) location);
+		}
+		for (Route route : nextRoutes) {
+			route.toList(buyzones);
+		}
+	}
+	
 	public static Route BuildRoute(Route[] nodeMap, int[][] routeMap) {
 		if (nodeMap.length > 0) {
 			for (int[] path : routeMap) {

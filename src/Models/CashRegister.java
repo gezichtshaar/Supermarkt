@@ -10,7 +10,7 @@ import Supermarket.Options;
 import Supermarket.Supermarket;
 
 public class CashRegister implements Task {
-	private Queue<Costumer> queue;
+	private final Queue<Costumer> queue;
 	private BigDecimal balance;
 
 	public CashRegister() {
