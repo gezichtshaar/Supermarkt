@@ -1,8 +1,10 @@
 package com.supermarket.main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Random;
 
@@ -13,6 +15,7 @@ import com.supermarket.actors.Customer;
 import com.supermarket.actors.Manager;
 import com.supermarket.interfaces.Actor;
 import com.supermarket.models.Location;
+import com.supermarket.models.Record;
 import com.supermarket.models.Storage;
 
 public class Supermarket extends Observable {
@@ -82,14 +85,6 @@ public class Supermarket extends Observable {
 
 	public Storage getStorage() {
 		return this.storage;
-	}
-	
-	public Location getLayout() {
-		return layout;
-	}
-	
-	public List<Actor> getActors() {
-		return actors;
 	}
 	
 	public Database getDatabase() {

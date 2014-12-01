@@ -1,6 +1,7 @@
 package com.supermarket.models;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -60,5 +61,13 @@ public class CashRegister implements BuyZone {
 
 	public int getMaxEmployees() {
 		return MAX_EMPLOYEES;
+	}
+
+	public boolean hasQueue() {
+		return true;
+	}
+
+	public List<Product> takeProduct(Types type, int amount) {
+		return new ArrayList<Product>();
 	}
 }

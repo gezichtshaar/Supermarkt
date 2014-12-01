@@ -68,4 +68,18 @@ public class Aisle implements BuyZone {
 	public int getMaxEmployees() {
 		return MAX_EMPLOYEES;
 	}
+
+	public boolean hasQueue() {
+		return false;
+	}
+
+	public List<Product> takeProduct(Types type, int amount) {
+		List<Product> takenProducts = new ArrayList<Product>();
+		for (int n = 0; n < shelves.size() && takenProducts.size() < amount; n++) {
+			if (shelves.get(n).getType() == type && !shelves.get(n).isEmpty()) {
+				takenProducts.addAll(shelves.get(n).takeProducts(amount));
+			}
+		}
+		return takenProducts;
+	}
 }

@@ -3,25 +3,29 @@ package com.supermarket.views;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import com.supermarket.models.Record;
+
 public class BuyZone extends Drawable {
-	private static final int WIDTH = 10;
-	private static final int HEIGHT = 10;
+	private static final int RADIUS = 10;
 	
 	private final Types type;
 
-	public BuyZone(int x, int y, Types type) {
-		super(x, y);
-		this.type = type;
+	public BuyZone(Record record) {
+		super(record);
+		this.type = Types.valueOf(record.getType());
 	}
 
 	@Override
 	public void draw(Graphics2D g) {
 		g.setColor(type.getColor());
-		g.fillRect(x - WIDTH/2, y - HEIGHT/2, WIDTH, HEIGHT);
+		g.fillOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
 	}
 
 	enum Types {
-		AISLE(Color.GREEN);
+		AISLE(Color.GREEN),
+		DISCOUNTAISLE(Color.LIGHT_GRAY),
+		DEPARTMENT(Color.BLUE),
+		CASHREGISTER(Color.MAGENTA);
 		
 		private final Color color;
 		private Types(Color color) {

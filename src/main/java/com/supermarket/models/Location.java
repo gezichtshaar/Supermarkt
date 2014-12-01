@@ -2,6 +2,8 @@ package com.supermarket.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 import com.supermarket.interfaces.BuyZone;
 
@@ -37,7 +39,10 @@ public class Location {
 		return null;
 	}
 
-	public Location next() {
+	public Location next(Set<Product.Types> wantsTypes) {
+		if (nextLocations.size() > 0) {
+			return nextLocations.get(new Random().nextInt(nextLocations.size()));
+		}
 		return null;
 	}
 

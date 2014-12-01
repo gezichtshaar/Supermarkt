@@ -13,7 +13,7 @@ import com.supermarket.models.Product;
 
 public class Customer implements Actor {
 	private Location location;
-	private final EnumMap<Product.Types, Integer> wishList;
+	private final EnumMap<Product.Types, Integer> wishList; //needs to be fixed
 	private final List<Product> shoppingCart;
 	private BigDecimal wallet;
 	
@@ -29,9 +29,20 @@ public class Customer implements Actor {
 			return true;
 		}
 		
-		if (!this.location.getLocation().inQueue(this) && hasWishlistProduct(this.location.getLocation())) {
-			this.location = this.location.next();
+		BuyZone buyZone = this.location.getLocation();
+		if (hasWishlistProduct(buyZone)) {
+			if (buyZone.hasQueue() && !buyZone.inQueue(this)) {
+				buyZone.registerToQueue(this);
+			}else if(!buyZone.hasQueue()) {
+				Product.Types type = wantsBuyZoneProduct(buyZone);
+				shoppingCart.addAll(buyZone.takeProduct(type, wishList.get(type)));
+			}
+		}else{
+			if (!buyZone.inQueue(this)) {
+				this.location = this.location.next(wishList.keySet());
+			}
 		}
+		System.out.println(buyZone);
 		return false;
 	}
 	
@@ -42,6 +53,15 @@ public class Customer implements Actor {
 			}
 		}
 		return false;
+	}
+	
+	private Product.Types wantsBuyZoneProduct(BuyZone buyZone) {
+		for (Product.Types type : wishList.keySet()) {
+			if (wishList.get(type).intValue() > 0 && buyZone.hasProduct(type)) {
+				return type;
+			}
+		}
+		return null;
 	}
 	
 	public void payed(BigDecimal amount) {

@@ -9,7 +9,7 @@ import com.supermarket.controllers.Controller;
 import com.supermarket.main.Supermarket;
 
 public class MainView implements Observer {
-	private Controller controller;
+	private final Controller controller;
 	private JFrame frame;
 	
 	/**
