@@ -12,9 +12,9 @@ public class Employee implements Actor {
 	}
 
 	public boolean act(Supermarket supermarket) {
-		Task task = manager.getTask();
+		Task task = manager.getTask(this);
 		if (task != null) {
-			task.doTask();
+			task.doTask(supermarket);
 		}
 		return false;
 	}

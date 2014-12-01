@@ -5,10 +5,11 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import com.supermarket.actors.Customer;
 import com.supermarket.interfaces.BuyZone;
+import com.supermarket.main.Supermarket;
 import com.supermarket.models.Product.Types;
 
 public class Department implements BuyZone {
-	private static final int MAX_EMPLOYEES = 5;
+	private static final int MAX_EMPLOYEES = 1;
 	
 	private final Shelf shelf;
 	private final Queue<Customer> customers;
@@ -28,17 +29,17 @@ public class Department implements BuyZone {
 		}
 	}
 
-	public void doTask() {
+	public void doTask(Supermarket supermarket) {
 		if (customers.size() > 0) {
 			Customer customer = this.customers.poll();
 			customer.addProducts(this.shelf.takeProducts(customer.wantsProductAmount(this.shelf.getType())));
 		}else{
-			shelf.fill();
+			shelf.fill(supermarket.getStorage());
 		}
 	}
 
 	public int getPriority() {
-		return 0;
+		return (shelf.needsRefill() ? shelf.MIN_PRODUCT_COUNT - shelf.getProductCount() : 0);
 	}
 
 	public boolean hasProduct(Types type) {

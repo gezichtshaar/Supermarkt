@@ -12,13 +12,13 @@ public class Transaction {
 	@Column(name = "Price")
 	private int price;
 	@Column(name = "ProductId")
-	private int productId;
+	private String productId;
 
 	// Maybe a transaction DateTime?
 	public Transaction() {
 	}
 
-	public Transaction(int price, int productId) {
+	public Transaction(int price, String productId) {
 		this.price = price;
 		this.productId = productId;
 	}
@@ -39,11 +39,11 @@ public class Transaction {
 		this.price = price;
 	}
 
-	public int getProductIds() {
+	public String getProductIds() {
 		return productId;
 	}
 
-	public void setProductIds(int productId) {
+	public void setProductIds(String productId) {
 		this.productId = productId;
 	}
 }

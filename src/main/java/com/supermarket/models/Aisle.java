@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import com.supermarket.actors.Customer;
 import com.supermarket.interfaces.BuyZone;
+import com.supermarket.main.Supermarket;
 import com.supermarket.models.Product.Types;
 
 public class Aisle implements BuyZone {
@@ -14,17 +15,17 @@ public class Aisle implements BuyZone {
 	private static final int SHELF_REFILL_PRIORITY = 1;
 	
 	private final List<Shelf> shelves;
+	private int lastUpdatedShelf;
 	
 	public Aisle(Product.Types[] types) {
 		this.shelves = new ArrayList<Shelf>();
+		this.lastUpdatedShelf = 0;
 		this.createShelves(types);
 	}
 	
 	private void createShelves(Product.Types[] types) {
 		for (Product.Types type : types) {
-			Shelf shelf = new Shelf(type);
-			shelf.fill();
-			this.shelves.add(shelf);
+			this.shelves.add(new Shelf(type));
 		}
 	}
 
@@ -35,9 +36,13 @@ public class Aisle implements BuyZone {
 	public void registerToQueue(Customer customer) {
 	}
 
-	public void doTask() {
-		for (Shelf shelf : shelves) {
-			
+	public void doTask(Supermarket supermarket) {
+		for (int n = 0; n < shelves.size(); n++) {
+			this.lastUpdatedShelf = ++this.lastUpdatedShelf % this.shelves.size();
+			if (this.shelves.get(this.lastUpdatedShelf).needsRefill()) {
+				this.shelves.get(this.lastUpdatedShelf).fill(supermarket.getStorage());
+				n = shelves.size(); // muh hax
+			}
 		}
 	}
 	

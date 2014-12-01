@@ -9,7 +9,7 @@ public class Carriage implements Actor {
 	private int timer;
 
 	public Carriage() {
-		timer = 0;
+		timer = WAIT_TIME;
 	}
 
 	public boolean act(Supermarket supermarket) {

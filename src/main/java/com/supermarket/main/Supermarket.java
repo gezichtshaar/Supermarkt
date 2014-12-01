@@ -8,6 +8,7 @@ import java.util.Random;
 
 import org.omg.CORBA.INITIALIZE;
 
+import com.supermarket.actors.Carriage;
 import com.supermarket.actors.Customer;
 import com.supermarket.actors.Manager;
 import com.supermarket.interfaces.Actor;
@@ -42,6 +43,7 @@ public class Supermarket extends Observable {
 	}
 	
 	private void initialize() {
+		this.actors.add(new Carriage());
 		for(int n = 0; n < EMPLOYEE_COUNT; n++) {
 			this.actors.add(this.manager.CreateEmployee());
 		}
@@ -54,7 +56,7 @@ public class Supermarket extends Observable {
 	}
 	
 	private void tick() {
-		//database.startCommit();
+		database.startCommit();
 		this.inviteCustomers(new Random().nextInt(MAX_CUSTOMER_INVITE));
 		
 		Iterator<Actor> actorIterator = actors.iterator();
@@ -63,7 +65,7 @@ public class Supermarket extends Observable {
 				actorIterator.remove();
 			}
 		}
-		//database.doCommit();
+		database.doCommit();
 	}
 	
 	public void run() throws InterruptedException {
@@ -88,5 +90,9 @@ public class Supermarket extends Observable {
 	
 	public List<Actor> getActors() {
 		return actors;
+	}
+	
+	public Database getDatabase() {
+		return database;
 	}
 }

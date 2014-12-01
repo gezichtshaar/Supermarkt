@@ -4,25 +4,25 @@ import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 
 public class Database {
-	private final Session session;
+	//private final Session session;
 	
 	public Database() {
-		this.session = new Configuration().configure().buildSessionFactory().getCurrentSession();
+		//this.session = new Configuration().configure().buildSessionFactory().getCurrentSession();
 	}
 
 	public void startCommit() {
-		this.session.beginTransaction();
+		//this.session.beginTransaction();
 	}
 	
 	public void saveObject(Object o) {
-		this.session.save(o);
+		//this.session.save(o);
 	}
 	
 	public void doCommit() {
-		this.session.getTransaction().commit();
+		//this.session.getTransaction().commit();
 	}
 
 	public void destroy() {
-		this.session.close();
+		//this.session.close();
 	}
 }
