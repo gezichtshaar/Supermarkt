@@ -12,10 +12,11 @@ public class Carriage implements Actor {
 		timer = 0;
 	}
 
-	public void act(Supermarket supermarket) {
+	public boolean act(Supermarket supermarket) {
 		if (++timer >= WAIT_TIME) {
 			supermarket.getStorage().fill();
 			timer = 0;
 		}
+		return false;
 	}
 }

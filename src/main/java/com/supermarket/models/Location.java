@@ -21,7 +21,7 @@ public class Location {
 		this.nextLocations.add(location);
 	}
 	
-	public BuyZone getTask() {
+	public BuyZone getLocation() {
 		return buyZone;
 	}
 
@@ -32,7 +32,28 @@ public class Location {
 					locations[n].addLocation(locations[n+1]);
 				}
 			}
+			return locations[0];
 		}
 		return null;
+	}
+
+	public Location next() {
+		return null;
+	}
+
+	public List<BuyZone> toList() {
+		List<BuyZone> buyZones = new ArrayList<BuyZone>();
+		buyZones.add(buyZone);
+		this.toList(buyZones);
+		return buyZones;
+	}
+	
+	private void toList(List<BuyZone> buyZones) {
+		for(Location buyZone : nextLocations) {
+			if (!buyZones.contains(buyZone.getLocation())) {
+				buyZones.add(buyZone.getLocation());
+				buyZone.toList(buyZones);
+			}
+		}
 	}
 }

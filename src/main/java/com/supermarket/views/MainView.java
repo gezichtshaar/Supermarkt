@@ -6,6 +6,7 @@ import java.util.Observer;
 import javax.swing.JFrame;
 
 import com.supermarket.controllers.Controller;
+import com.supermarket.main.Supermarket;
 
 public class MainView implements Observer {
 	private Controller controller;
@@ -24,11 +25,12 @@ public class MainView implements Observer {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		this.frame = new JFrame();
+		this.frame = new Canvas();
 		this.frame.setBounds(100, 100, 450, 300);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public void update(Observable o, Object arg) {
+		Supermarket supermarket = (Supermarket)arg;
 	}
 }

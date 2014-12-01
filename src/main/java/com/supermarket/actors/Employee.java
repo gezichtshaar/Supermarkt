@@ -1,18 +1,21 @@
 package com.supermarket.actors;
 
 import com.supermarket.interfaces.Actor;
+import com.supermarket.interfaces.Task;
 import com.supermarket.main.Supermarket;
-import com.supermarket.models.Location;
 
 public class Employee implements Actor {
-	private Location task;
+	private final Manager manager;
 
-	public Employee() {
-		// TODO Auto-generated constructor stub
+	Employee(Manager manager) {
+		this.manager = manager;
 	}
 
-	public void act(Supermarket supermarket) {
-		// TODO Auto-generated method stub
-		
+	public boolean act(Supermarket supermarket) {
+		Task task = manager.getTask();
+		if (task != null) {
+			task.doTask();
+		}
+		return false;
 	}
 }
