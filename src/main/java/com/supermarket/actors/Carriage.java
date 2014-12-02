@@ -4,7 +4,7 @@ import com.supermarket.interfaces.Actor;
 import com.supermarket.main.Supermarket;
 
 public class Carriage implements Actor {
-	private static final int WAIT_TIME = 100;
+	private static final int WAIT_TIME = 1;
 	
 	private int timer;
 

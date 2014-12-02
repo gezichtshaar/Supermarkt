@@ -18,7 +18,10 @@ public class Product {
 	}
 	
 	public enum Types {
-		BREAD(1, 1);
+		BREAD(1, 1),
+		PINDABOTER(5, 1),
+		APPELBOTER(3, 0.75),
+		JELMERTBAMMETJE(0.25, 1);
 		
 		private BigDecimal price;
 		private BigDecimal discount;

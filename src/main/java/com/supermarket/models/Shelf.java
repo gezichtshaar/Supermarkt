@@ -33,12 +33,12 @@ public class Shelf {
 	}
 
 	public boolean isEmpty() {
-		return this.products.size() > 0;
+		return this.products.size() <= 0;
 	}
 
 	public List<Product> takeProducts(int wantsProductAmount) {
 		List<Product> takenProducts = new ArrayList<Product>();
-		while (wantsProductAmount --> 0) {
+		while (wantsProductAmount --> 0 && !isEmpty()) {
 			takenProducts.add(products.pop());
 		}
 		return takenProducts;
