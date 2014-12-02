@@ -3,6 +3,7 @@ package com.supermarket.models;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import com.supermarket.actors.Customer;
@@ -32,9 +33,11 @@ public class Department implements BuyZone {
 	}
 
 	public void doTask(Supermarket supermarket) {
-		if (customers.size() > 0) {
+		if (customers.size() > 0 && !shelf.isEmpty()) {
 			Customer customer = this.customers.poll();
-			customer.addProducts(this.shelf.takeProducts(customer.wantsProductAmount(this.shelf.getType())));
+			if (customer.getBuyZone() == this) {
+				customer.addProducts(this.shelf.takeProducts(customer.wantsProductAmount(this.shelf.getType())));
+			}
 		}else{
 			shelf.fill(supermarket.getStorage());
 		}
@@ -58,5 +61,9 @@ public class Department implements BuyZone {
 
 	public List<Product> takeProduct(Types type, int amount) {
 		return new ArrayList<Product>();
+	}
+
+	public boolean hasProducts(Set<Types> types) {
+		return types.contains(shelf.getType()) && !shelf.isEmpty();
 	}
 }

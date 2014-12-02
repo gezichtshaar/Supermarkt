@@ -3,6 +3,7 @@ package com.supermarket.models;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import com.supermarket.actors.Customer;
@@ -81,5 +82,14 @@ public class Aisle implements BuyZone {
 			}
 		}
 		return takenProducts;
+	}
+
+	public boolean hasProducts(Set<Types> types) {
+		for(Shelf shelf : shelves) {
+			if (types.contains(shelf.getType()) && !shelf.isEmpty()) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

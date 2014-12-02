@@ -21,7 +21,7 @@ import com.supermarket.models.Storage;
 public class Supermarket extends Observable {
 	private static final int TICK_PER_SECOND = 1;
 	private static final int EMPLOYEE_COUNT = 10;
-	private static final int MAX_CUSTOMER_INVITE = 10;
+	private static final int MAX_CUSTOMER_INVITE = 3;
 	
 	private final Location layout;
 	
@@ -54,7 +54,7 @@ public class Supermarket extends Observable {
 	
 	private void inviteCustomers(int amount) {
 		while(amount --> 0) {
-			this.actors.add(new Customer(layout));
+			this.actors.add(Customer.Create(layout));
 		}
 	}
 	

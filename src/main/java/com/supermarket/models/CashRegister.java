@@ -2,11 +2,11 @@ package com.supermarket.models;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
-
-import javassist.expr.NewArray;
 
 import com.supermarket.actors.Customer;
 import com.supermarket.interfaces.BuyZone;
@@ -37,16 +37,20 @@ public class CashRegister implements BuyZone {
 
 	public void doTask(Supermarket supermarket) {
 		if (this.customers.size() > 0) {
-			List<Product> products = customers.peek().getShoppingCart();
-			for(Product product : products) {
-				if (customers.peek().hasMoney(product.getPrice())) {
+			Customer customer = customers.poll();
+			
+			Iterator<Product> products = customer.getShoppingCart().iterator();
+			while(products.hasNext()) {
+				Product product = products.next();
+				if (customer.hasMoney(product.getPrice())) {
 					this.balance = this.balance.add(product.getPrice());
 					supermarket.getDatabase().saveObject(new Transaction(product.getPrice().intValue(), product.getType().toString()));
-					products.remove(product);
+					products.remove();
 				}else{
 					supermarket.getStorage().addProduct(product);
 				}
 			}
+			System.out.println(this.balance);
 		}
 	}
 
@@ -69,5 +73,9 @@ public class CashRegister implements BuyZone {
 
 	public List<Product> takeProduct(Types type, int amount) {
 		return new ArrayList<Product>();
+	}
+
+	public boolean hasProducts(Set<Types> types) {
+		return true;
 	}
 }
